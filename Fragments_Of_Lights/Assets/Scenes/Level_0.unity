@@ -2009,7 +2009,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a8caeee24ff84e468cfd29bae4091c6, type: 2}
+  - {fileID: 2100000, guid: cbd2511851337d047b6b320c36d9893a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2034,7 +2034,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1.3
+    widthMultiplier: 4
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2349,6 +2349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: vfx_TerraScanner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472621134246291474, guid: 8ede703e5b7444d5fa9b553bd9cf3134,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8790258921472175704, guid: 8ede703e5b7444d5fa9b553bd9cf3134,
         type: 3}
@@ -6059,7 +6064,7 @@ Transform:
   m_GameObject: {fileID: 919132148568379013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 2.3, y: 0.44, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6311,7 +6316,7 @@ MonoBehaviour:
   dashCooldown: 2
   dashDuration: 0.2
   dashKey: 304
-  dashTrail: {fileID: 645935690}
+  dashTrail: {fileID: 645935692}
   playerRenderer: {fileID: 7627072216431374362}
   canDash: 1
 --- !u!4 &1031632034722279010

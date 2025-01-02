@@ -42,14 +42,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DefaultScale: 50
+    - _DefaultScale: 80
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color1: {r: 95.87451, g: 95.87451, b: 95.87451, a: 1}
-    - _Color2: {r: 23.968628, g: 23.968628, b: 23.968628, a: 1}
-    - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
-    - _MainTextSpeed: {r: 0.1, g: 0, b: 0, a: 0}
+    - _Color1: {r: 908.07544, g: 600.6975, b: 0, a: 1}
+    - _Color2: {r: 8, g: 5.945306, b: 0.49056625, a: 1}
+    - _DissolveSpeed: {r: 1, g: 0.5, b: 0, a: 0}
+    - _MainTextSpeed: {r: 10, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3686222265118085756
 MonoBehaviour:

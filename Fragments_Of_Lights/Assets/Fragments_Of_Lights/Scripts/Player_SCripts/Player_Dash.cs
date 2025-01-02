@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class Player_Dash : MonoBehaviour
 {
-    public float dashSpeed = 20f; // Speed of the dash
-    public float dashDuration = 0.2f; // Duration of the dash
-    public float dashCooldown = 1f; // Cooldown time between dashes
-    private float dashTime; // Time remaining for dash
-    private float lastDashTime; // Time of the last dash
-    private bool isDashing = false; // Whether the player is currently dashing
+    public float dashSpeed = 20f; 
+    public float dashDuration = 0.2f; 
+    public float dashCooldown = 1f; 
+    private float dashTime; 
+    private float lastDashTime; 
+    private bool isDashing = false; 
     private CharacterController characterController;
-    private Vector3 dashDirection; // Direction of the dash
+    private Vector3 dashDirection; 
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         dashTime = 0f;
-        lastDashTime = -dashCooldown; // Start with the ability to dash
+        lastDashTime = -dashCooldown; 
     }
 
     void Update()
     {
-        // Dash input check (e.g., pressing Shift key)
+        
         if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= lastDashTime + dashCooldown && !isDashing)
         {
             StartDash();
         }
 
-        // If the dash is active, move the player
+        
         if (isDashing)
         {
             dashTime -= Time.deltaTime;
@@ -44,15 +44,16 @@ public class Player_Dash : MonoBehaviour
 
     void StartDash()
     {
-        // Set the dash direction to where the player is facing
+        
         dashDirection = transform.forward;
 
-        // Start the dash
+        
         isDashing = true;
         dashTime = dashDuration;
-        lastDashTime = Time.time; // Record the time of the dash
+        lastDashTime = Time.time; 
 
-        // Optional: Play a dash animation or effect here (e.g., particle effects, sound)
+        // add animation/dash trail here!!!!
+        
         Debug.Log("Dashing!");
     }
 }

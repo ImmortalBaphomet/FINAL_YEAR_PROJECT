@@ -12,7 +12,7 @@ public class LightSpeedDash : MonoBehaviour
 
 
     [Header("Trail Effect")]
-    [SerializeField] private GameObject dashTrail; 
+    [SerializeField] private TrailRenderer dashTrail; 
     [SerializeField] private Renderer playerRenderer; 
 
     public bool canDash = true;
@@ -37,8 +37,14 @@ public class LightSpeedDash : MonoBehaviour
     {
         if (!canDash) return;
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            dashDirection = (transform.forward + Vector3.up) * dashDistance; 
+        }
+        else{
+            dashDirection = transform.forward * dashDistance; 
+        }
         
-        dashDirection = transform.forward * dashDistance; 
         Vector3 dashTarget = transform.position + dashDirection;
 
         
@@ -50,7 +56,10 @@ public class LightSpeedDash : MonoBehaviour
         
         canDash = false;
         playerRenderer.enabled = false;
-        if (dashTrail != null) dashTrail.SetActive(true);
+        if (dashTrail != null)
+        {   
+            dashTrail.enabled = true;
+        } 
 
         
         float elapsedTime = 0f;
@@ -68,7 +77,11 @@ public class LightSpeedDash : MonoBehaviour
 
         
         playerRenderer.enabled = true;
-        if (dashTrail != null) dashTrail.SetActive(false);
+        if (dashTrail != null)
+        {
+            dashTrail.enabled = false;
+            dashTrail.Clear();
+        } 
 
         // Start cooldown timer
         yield return new WaitForSeconds(dashCooldown);
