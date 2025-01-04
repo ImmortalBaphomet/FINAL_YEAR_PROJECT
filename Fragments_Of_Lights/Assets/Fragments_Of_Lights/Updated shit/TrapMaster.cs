@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class TrapMaster : MonoBehaviour
 {
     public abstract void Activate();
+    public abstract void Deactivate();
 }

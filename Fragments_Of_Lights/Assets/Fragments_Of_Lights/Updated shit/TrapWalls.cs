@@ -25,6 +25,10 @@ public class TrapWalls : TrapMaster
     {
         wallActivate = true;
     }
+    public override void Deactivate()
+    {
+        wallActivate = false;
+    }
 
 
     public void ActivateWallTrap()
