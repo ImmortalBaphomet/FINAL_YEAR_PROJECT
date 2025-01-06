@@ -16,10 +16,14 @@ public class Player_Jump : MonoBehaviour
     private CharacterController characterController;
     private Vector3 velocity;
     private bool isGrounded;
+    
 
-    // Booleans to control animations
+    [Header("Booleans to control animations")] 
     private bool isJumping;
     private bool isFalling;
+
+
+    
 
     private void Start()
     {
@@ -103,6 +107,9 @@ public class Player_Jump : MonoBehaviour
 
         // Move the player
         characterController.Move(velocity * Time.deltaTime);
+
+
+        
     }
 
     // This function is called after the player lands, to reset animation states
@@ -114,4 +121,9 @@ public class Player_Jump : MonoBehaviour
         playerAnim.SetBool("Is_Falling", false);
         playerAnim.SetBool("Is_Grounded", true); // Trigger landing animation
     }
+
+    
+
+
+    
 }

@@ -15,15 +15,17 @@ public class WallSpear : TrapMaster
     void Start()
     {
         
-        foreach (GameObject spear in spears)
-        {
-            spearRestPositions.Add(spear.transform.position);
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        foreach (GameObject spear in spears)
+        {
+            spearRestPositions.Add(spear.transform.position);
+        }
+
        if (wallSpearActivate)
         {
              
@@ -51,7 +53,7 @@ public class WallSpear : TrapMaster
 
     IEnumerator ThrustSpear(GameObject spear, Vector3 restPosition)
     {
-        Vector3 thrustPosition = restPosition + spear.transform.forward * thrustDistance;// from rest to the thrustdistance point b.
+        Vector3 thrustPosition = restPosition + spear.transform.up * thrustDistance;// from rest to the thrustdistance point b.
 
         
         while (Vector3.Distance(spear.transform.position, thrustPosition) > 0.01f)
@@ -73,24 +75,4 @@ public class WallSpear : TrapMaster
     
 }
 /*
-{
-    
-
-    
-
-    void Update()
-    {
-        
-    }
-
-    public override void Activate()
-    {
-        wallSpearActivate = true;
-    }
-
-    
-
-    
-}
-
 */
