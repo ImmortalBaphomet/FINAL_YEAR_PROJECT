@@ -2,46 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateObject : MonoBehaviour
+public class MirrorControl : MonoBehaviour
 {
-   public float rotationSpeed = 100f; 
+    [Header("Mirror Settings")]
+    public float rotationSpeed = 100f; // Speed of rotation
+    [SerializeField] private bool isSelected = false;   // check for mirror is selected
     public KeyCode rotateClockwiseKey = KeyCode.E; 
     public KeyCode rotateCounterClockwiseKey = KeyCode.Q; 
-    [SerializeField] private float posRotAngle;// not using clamping, just 
-    [SerializeField] private float negRotAngle;
-    [SerializeField] private float currRotAngle;
-
+    [SerializeField] private float maxRotAngle; // not using clamping, just 
+    [SerializeField] private float minRotAngle;
     private float targetRotationY; // Target rotation angle
 
     void Start()
     {
-        // Initialize the target rotation to the current rotation
         targetRotationY = transform.eulerAngles.y;
     }
 
     void Update()
     {
-        HandleInput();
-        RotateToTarget();
+        if (isSelected)
+        {
+            
+            HandleInput();
+            RotateToTarget();
+        }
+    }
+
+    // Called to select this mirror
+    public void SelectMirror(bool select)
+    {
+        isSelected = select;
     }
 
     void HandleInput()
     {
-        // Rotate clockwise
         if (Input.GetKey(rotateClockwiseKey))
         {
-            targetRotationY = Mathf.Clamp(currRotAngle,negRotAngle,posRotAngle);
+            targetRotationY += rotationSpeed * Time.deltaTime; // Increment target rotation
         }
         // Rotate counterclockwise
         if (Input.GetKey(rotateCounterClockwiseKey))
         {
-            targetRotationY = Mathf.Clamp(currRotAngle,negRotAngle,posRotAngle);
+            targetRotationY -= rotationSpeed * Time.deltaTime; // Decrement target rotation
         }
 
-        // Clamp target rotation to stay within 0-360 degrees
-        //targetRotationY = Mathf.Repeat(targetRotationY, 360f);
+        // Clamp target rotation to stay within specified limits
+        targetRotationY = Mathf.Clamp(targetRotationY, minRotAngle, maxRotAngle);
     }
-
     void RotateToTarget()
     {
         // Smoothly rotate to the target angle
@@ -49,6 +56,4 @@ public class RotateObject : MonoBehaviour
         float newY = Mathf.LerpAngle(currentY, targetRotationY, Time.deltaTime * rotationSpeed);
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, newY, transform.eulerAngles.z);
     }
-
-    
 }

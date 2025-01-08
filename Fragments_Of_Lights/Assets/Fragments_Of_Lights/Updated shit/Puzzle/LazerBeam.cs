@@ -24,28 +24,76 @@ public class LazerBeam : MonoBehaviour
 
     void ShootLaser()
     {
-        // Start of the laser beam
+        
         Vector3 laserStart = transform.position;
-        // End of the laser beam (default max length)
-        Vector3 laserEnd = laserStart + transform.forward * laserLength;
+        Vector3 laserDirection = transform.forward;
 
-        // Perform a raycast to check for collisions
-        RaycastHit hit;
-        if (Physics.Raycast(laserStart, transform.forward, out hit, laserLength))
+        List<Vector3> points = new List<Vector3> { laserStart };
+
+        for (int i = 0; i < 10; i++) // Limit to 10 reflections to prevent infinite loops // put a variable to control how mnay reflections take place
         {
-            // Check if the object has the specified tag
-            if (hit.collider.CompareTag(collisionTag))
+            Ray ray = new Ray(laserStart, laserDirection);
+            if (Physics.Raycast(ray, out RaycastHit hit, laserLength))
             {
-                // If the object matches the tag, set the laser end to the hit point
-                laserEnd = hit.point;
+                points.Add(hit.point);
 
-                // Optional: Handle collision logic
-                Debug.Log($"Laser collided with object tagged '{collisionTag}': {hit.collider.name}");
+                if (hit.collider.CompareTag(collisionTag))
+                {
+                    // Reflect the laser
+                    laserDirection = Vector3.Reflect(laserDirection, hit.normal);
+                    laserStart = hit.point;
+                }
+                else
+                {
+                    break; // Stop if it doesn't hit a reflector
+                }
+            }
+            else
+            {
+                points.Add(laserStart + laserDirection * laserLength);
+                break;
             }
         }
 
         // Update the LineRenderer positions
-        lineRenderer.SetPosition(0, laserStart); // Start point
-        lineRenderer.SetPosition(1, laserEnd);   // End point
+        lineRenderer.positionCount = points.Count;
+        lineRenderer.SetPositions(points.ToArray());
     }
 }
+/*
+// Start of the laser beam
+    Vector3 laserStart = transform.position;
+    Vector3 laserDirection = transform.forward;
+
+    List<Vector3> points = new List<Vector3> { laserStart };
+
+    for (int i = 0; i < 10; i++) // Limit to 10 reflections to prevent infinite loops
+    {
+        Ray ray = new Ray(laserStart, laserDirection);
+        if (Physics.Raycast(ray, out RaycastHit hit, laserLength))
+        {
+            points.Add(hit.point);
+
+            if (hit.collider.CompareTag(collisionTag))
+            {
+                // Reflect the laser
+                laserDirection = Vector3.Reflect(laserDirection, hit.normal);
+                laserStart = hit.point;
+            }
+            else
+            {
+                break; // Stop if it doesn't hit a reflector
+            }
+        }
+        else
+        {
+            points.Add(laserStart + laserDirection * laserLength);
+            break;
+        }
+    }
+
+    // Update the LineRenderer positions
+    lineRenderer.positionCount = points.Count;
+    lineRenderer.SetPositions(points.ToArray());
+}
+*/
