@@ -590,6 +590,18 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 151413632089477534}
   ControlMenuUI: {fileID: 4206513173236743200}
   isPaused: 0
+--- !u!1 &126988851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6871366959066706328, guid: 25a8f5189ddcc4c609adb7844db6c628,
+    type: 3}
+  m_PrefabInstance: {fileID: 4844457593781547096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &126988853 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 1558743218617292393, guid: 25a8f5189ddcc4c609adb7844db6c628,
+    type: 3}
+  m_PrefabInstance: {fileID: 4844457593781547096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &142291274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,10 +6495,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3309453750056920861, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: dashTrail
+      value: 
+      objectReference: {fileID: 126988853}
+    - target: {fileID: 3309453750056920861, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: dahsTrailHolder
+      value: 
+      objectReference: {fileID: 126988851}
     - target: {fileID: 3615373730949438829, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 3615373730949438829, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
@@ -6538,6 +6560,21 @@ PrefabInstance:
       propertyPath: prismCountText
       value: 
       objectReference: {fileID: 32383759}
+    - target: {fileID: 5432032250740529113, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432032250740529113, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432032250740529113, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6582284965903514040, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: WinMenuUI
@@ -6548,6 +6585,11 @@ PrefabInstance:
       propertyPath: FailMenuUI
       value: 
       objectReference: {fileID: 804162074}
+    - target: {fileID: 7651316225393908820, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9011740271714312204, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: failarea
