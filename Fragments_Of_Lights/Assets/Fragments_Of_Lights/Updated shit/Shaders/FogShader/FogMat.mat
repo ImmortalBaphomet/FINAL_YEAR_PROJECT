@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StylisedTrail 1
-  m_Shader: {fileID: -6465566751694194690, guid: b63ba167722174bf286fa2119c92de92,
+  m_Name: FogMat
+  m_Shader: {fileID: -6465566751694194690, guid: fca9a9d3a6d0e49a98ef7b1faf85082c,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,10 +24,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainText:
-        m_Texture: {fileID: 2800000, guid: 35c627254464644ebbe0e4a069717e9c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -42,16 +38,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DefaultScale: 80
+    - _Divider: 50
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color1: {r: 3.839358, g: 0.29712212, b: 0, a: 1}
-    - _Color2: {r: 323.77914, g: 301.70123, b: 0, a: 1}
-    - _DissolveSpeed: {r: 40, g: 4, b: 0, a: 0}
-    - _MainTextSpeed: {r: 0.2, g: 0, b: 0, a: 0}
+    - _Color1: {r: 0.6415094, g: 0.44413817, b: 0.22089705, a: 0}
+    - _Color2: {r: 0.27056858, g: 0.08677461, b: 0.4716981, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3686222265118085756
+--- !u!114 &7069596982332947815
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
