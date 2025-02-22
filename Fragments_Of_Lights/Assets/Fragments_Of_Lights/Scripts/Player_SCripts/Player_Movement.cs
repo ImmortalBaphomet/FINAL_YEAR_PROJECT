@@ -24,7 +24,11 @@ public class Player_Movement : MonoBehaviour
 
     private void Update()
     {
-        // Get horizontal and vertical input (A/D, W/S or Arrow Keys)
+        HandleMove();
+    }
+    void HandleMove()
+    {
+         // Get horizontal and vertical input (A/D, W/S or Arrow Keys)
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 

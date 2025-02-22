@@ -2,10 +2,99 @@ using UnityEngine;
 
 public class Player_Jump : MonoBehaviour
 {
+    
     [Header("Jump Settings")]
     public float jumpForce = 8f;
     public float gravity = -20f;
 
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public float groundDistance = 0.2f;
+    public LayerMask groundMask;
+
+    private CharacterController characterController;
+    private Animator playerAnim;
+    private Vector3 velocity;
+    private bool isGrounded, isJumping, isFalling;
+
+    private void Start()
+    {
+        playerAnim = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
+    }
+
+    private void Update()
+    {
+        GroundCheck();
+        HandleJump();
+        ApplyGravity();
+        characterController.Move(velocity * Time.deltaTime);
+    }
+
+    private void GroundCheck()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+            if (!isJumping)
+            {
+                SetAnimationStates(true, false, false); // Grounded, not jumping, not falling
+            }
+        }
+    }
+
+    private void HandleJump()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            isJumping = true;
+            isFalling = false;
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            SetAnimationStates(false, true, false); // Not grounded, jumping, not falling
+        }
+
+        if (!isGrounded && (isJumping || !isJumping))
+        {
+            isFalling = true;
+            isJumping = false;
+            SetAnimationStates(false, false, true); // Not grounded, not jumping, falling
+        }
+    }
+
+    private void ApplyGravity()
+    {
+        if (!isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+    }
+
+    private void SetAnimationStates(bool grounded, bool jumping, bool falling)
+    {
+        playerAnim.SetBool("Is_Grounded", grounded);
+        playerAnim.SetBool("Is_Jumping", jumping);
+        playerAnim.SetBool("Is_Falling", falling);
+    }
+    
+}
+/*
+using UnityEngine;
+
+public class Player_Jump : MonoBehaviour
+{
+    
+}
+
+*/
+
+//old code
+/*
+        [Header("Jump Settings")]
+    public float jumpForce = 8f;
+    public float gravity = -20f;
+   
     public Animator playerAnim;
 
     [Header("Ground Check")]
@@ -34,7 +123,7 @@ public class Player_Jump : MonoBehaviour
     private void Update()
     {
         // Check if the player is grounded using a sphere at groundCheck's position
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+       Grounded();
 
         // Reset falling velocity if grounded, and check for landing animation
         if (isGrounded)
@@ -76,6 +165,7 @@ public class Player_Jump : MonoBehaviour
 
             // Apply the jump force
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+
         }
 
         // Falling logic - if player is in the air, not jumping
@@ -105,25 +195,26 @@ public class Player_Jump : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
 
-        // Move the player
+        // Move the player, uncomment after failed test.
         characterController.Move(velocity * Time.deltaTime);
-
 
         
     }
 
     // This function is called after the player lands, to reset animation states
-    private void OnLand()
+    //  private void OnLand()
+    // {
+    //     isJumping = false;
+    //     isFalling = false;
+    //     playerAnim.SetBool("Is_Jumping", false);
+    //     playerAnim.SetBool("Is_Falling", false);
+    //     playerAnim.SetBool("Is_Grounded", true); // Trigger landing animation
+    // } 
+
+    void Grounded()
     {
-        isJumping = false;
-        isFalling = false;
-        playerAnim.SetBool("Is_Jumping", false);
-        playerAnim.SetBool("Is_Falling", false);
-        playerAnim.SetBool("Is_Grounded", true); // Trigger landing animation
+         
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
 
-    
-
-
-    
-}
+*/
