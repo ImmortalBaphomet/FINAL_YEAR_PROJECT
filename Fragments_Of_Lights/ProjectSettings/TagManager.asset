@@ -8,6 +8,8 @@ TagManager:
   - Fail_Area
   - Prism
   - Reflector
+  - VioletArea
+  - RedArea
   layers:
   - Default
   - TransparentFX

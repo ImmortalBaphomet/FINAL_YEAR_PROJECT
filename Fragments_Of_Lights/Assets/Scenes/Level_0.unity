@@ -714,8 +714,8 @@ GameObject:
   - component: {fileID: 142291277}
   - component: {fileID: 142291280}
   m_Layer: 0
-  m_Name: Green_Light
-  m_TagString: Untagged
+  m_Name: Violet_Light
+  m_TagString: VioletArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,8 +754,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.2791295, y: 0.3897217, z: 1}
+  m_Center: {x: -0.49751598, y: 0.08241718, z: 0.000000032901877}
 --- !u!23 &142291278
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -821,6 +821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushForce: 10
+  lowGravity: -5
+  lowGravityZone: 0
 --- !u!1 &190409169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1294,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.02760786, y: -0.097302645, z: 0.002700175, w: 0.9948682}
-  m_LocalPosition: {x: 3.54, y: 2.1399999, z: -15.030999}
+  m_LocalPosition: {x: 36.5, y: -17.439999, z: -15.030999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2096,7 +2098,7 @@ PrefabInstance:
     - target: {fileID: 4587320714606323942, guid: 4abb5c11926d74b1492047e4acaf5fb2,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4587320714606323942, guid: 4abb5c11926d74b1492047e4acaf5fb2,
         type: 3}
@@ -3747,7 +3749,7 @@ Transform:
   m_GameObject: {fileID: 1491759534}
   serializedVersion: 2
   m_LocalRotation: {x: 0.02760786, y: -0.097302645, z: 0.0027001752, w: 0.9948682}
-  m_LocalPosition: {x: 3.54, y: 2.1399999, z: -15.030999}
+  m_LocalPosition: {x: 36.5, y: -17.439999, z: -15.030999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4544,7 +4546,7 @@ GameObject:
   - component: {fileID: 1786758108}
   m_Layer: 0
   m_Name: Red_Light
-  m_TagString: Untagged
+  m_TagString: RedArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4878,7 +4880,7 @@ GameObject:
   - component: {fileID: 1881220216}
   - component: {fileID: 1881220215}
   m_Layer: 0
-  m_Name: Green_Vent
+  m_Name: Violet_Vent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4917,7 +4919,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 0.8235294, g: 1, b: 0.44705883, a: 1}
+  m_Color: {r: 0.49803922, g: 0, b: 1, a: 1}
   m_Intensity: 500
   m_Range: 17.39
   m_SpotAngle: 69.16849
@@ -6741,6 +6743,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1558743218617292393, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PreviewTimeScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1953252638976276987, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: m_Name
@@ -6764,12 +6771,12 @@ PrefabInstance:
     - target: {fileID: 3615373730949438829, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.54
+      value: 33.5
       objectReference: {fileID: 0}
     - target: {fileID: 3615373730949438829, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.28
+      value: -18.3
       objectReference: {fileID: 0}
     - target: {fileID: 3615373730949438829, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
@@ -6850,6 +6857,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Name
+      value: TrailVFXcolor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Name
+      value: New Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 23.96863
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 13.526431
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.w
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.x
+      value: 11.169811
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.y
+      value: 6.875274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278229296367728150, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868501511803143808, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: isGreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868501511803143808, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: colorChangeDuration
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9011740271714312204, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
