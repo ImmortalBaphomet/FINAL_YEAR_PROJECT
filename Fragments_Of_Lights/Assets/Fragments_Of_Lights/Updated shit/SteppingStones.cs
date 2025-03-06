@@ -7,6 +7,8 @@ public class SteppingStones : MonoBehaviour
     [SerializeField] private bool stoneReal = true; // tick to true if the stone is real or false if stone is fake
     private Collider stoneCollider;
     private Renderer stoneRenderer;
+    private MeshRenderer meshRenderer;
+    public Material dissolveMat, defaultMat;
     private bool playerTrapped = false;
 
     // Start is called before the first frame update
@@ -14,6 +16,7 @@ public class SteppingStones : MonoBehaviour
     {
         stoneCollider = GetComponent<BoxCollider>();
         stoneRenderer = GetComponent<Renderer>();
+        meshRenderer = GetComponent<MeshRenderer>();
 
         UpdateStoneState();
     }
@@ -39,6 +42,7 @@ public class SteppingStones : MonoBehaviour
     {
         
         stoneRenderer.material.color = Color.red; 
+        meshRenderer.material = dissolveMat;
 
         
         yield return new WaitForSeconds(0.5f);
@@ -53,6 +57,7 @@ public class SteppingStones : MonoBehaviour
         {
             stoneCollider.isTrigger = true; 
             stoneRenderer.material.color = Color.gray; 
+            meshRenderer.material = defaultMat;
 
             // changes the layer to default from ground, preventing player from jumping.
             gameObject.layer = LayerMask.NameToLayer("Default"); 
