@@ -10,6 +10,7 @@ TagManager:
   - Reflector
   - VioletArea
   - RedArea
+  - Refractor
   layers:
   - Default
   - TransparentFX

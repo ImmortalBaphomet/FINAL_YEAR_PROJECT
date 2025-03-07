@@ -16,6 +16,11 @@ public class SwingingAxe : MonoBehaviour
 
     void Update()
     {
+        AxeSwing();
+    }
+
+    void AxeSwing()
+    {
         // Increment time for smooth swinging motion
         time += Time.deltaTime * swingSpeed;
 
@@ -25,33 +30,8 @@ public class SwingingAxe : MonoBehaviour
         // Apply rotation to swing around the Z-axis while keeping forward as +X
         transform.rotation = Quaternion.Euler(0, 90, angle);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Check if the colliding object is the player
-        if (other.CompareTag(playerTag))
-        {
-            // Example damage logic
-            //var playerHealth = other.GetComponent<PlayerHealth>();
-            // if (playerHealth != null)
-            // {
-            //     playerHealth.TakeDamage(damageAmount);
-            // }
-        }
-    }
 }
 
-/*
-    using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class SwingingAxe : MonoBehaviour
-{
-    
-
-}
-
-*/
 
 
