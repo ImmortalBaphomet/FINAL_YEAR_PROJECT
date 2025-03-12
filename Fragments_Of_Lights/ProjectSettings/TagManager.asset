@@ -11,6 +11,7 @@ TagManager:
   - VioletArea
   - RedArea
   - Refractor
+  - LazerEnd
   layers:
   - Default
   - TransparentFX

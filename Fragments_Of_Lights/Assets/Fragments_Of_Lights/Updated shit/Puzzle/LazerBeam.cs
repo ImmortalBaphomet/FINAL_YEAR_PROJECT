@@ -10,6 +10,8 @@ public class LazerBeam : MonoBehaviour
     public int maxReflections = 10;
     public string reflectorTag = "Reflector";
     public string refractorTag = "Refractor";
+    public string lazerEnd = "LazerEnd";
+    public bool hitFinish;
 
     void Start()
     {
@@ -38,13 +40,13 @@ public class LazerBeam : MonoBehaviour
             {
                 points.Add(hit.point);
 
-                if (hit.collider.CompareTag(reflectorTag))
+                if (hit.collider.CompareTag(reflectorTag))// for reflection
                 {
                     // Reflect the laser
                     laserDirection = Vector3.Reflect(laserDirection, hit.normal);
                     laserStart = hit.point;
                 }
-                else if (hit.collider.CompareTag(refractorTag))
+                else if (hit.collider.CompareTag(refractorTag)) // for refraction
                 {
                     // Refract the laser
                     RefractionObj refractiveObject = hit.collider.GetComponent<RefractionObj>();
@@ -63,14 +65,24 @@ public class LazerBeam : MonoBehaviour
                         laserStart = hit.point;
                     }
                 }
+                else if(hit.collider.CompareTag(lazerEnd))
+                {
+                    hitFinish = true;
+                    Debug.Log("Lazer Finish");
+                }
                 else
                 {
+                    
                     break; // Stop if the laser hits a non-reflective/refractive surface
                 }
+                
             }
             else
             {
+                
                 points.Add(laserStart + laserDirection * laserLength);
+                hitFinish = false;
+                Debug.Log("Lazer did not hit Finish");
                 break;
             }
         }
@@ -85,6 +97,4 @@ public class LazerBeam : MonoBehaviour
 
 }
 /*
- 
-}
 */
