@@ -19,8 +19,8 @@ public class Player_Jump : MonoBehaviour
     
 
     [Header("Booleans to control animations")] 
-    private bool isJumping;
-    private bool isFalling;
+    public bool isJumping;
+    public bool isFalling;
 
 
     
