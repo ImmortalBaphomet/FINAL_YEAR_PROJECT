@@ -12,7 +12,8 @@ public class LightSpeedDash : MonoBehaviour
 
 
     [Header("Trail Effect")]
-    [SerializeField] private TrailRenderer dashTrail; 
+    [SerializeField] private TrailRenderer dashTrail;
+    [SerializeField] private GameObject dahsTrailHolder; 
     [SerializeField] private Renderer playerRenderer; 
 
     public bool canDash = true;
@@ -22,14 +23,16 @@ public class LightSpeedDash : MonoBehaviour
     void Start()
     {
         canDash = true;
+        dahsTrailHolder.SetActive(false); 
     }
 
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetKeyDown(dashKey) && canDash)
+        if (Input.GetKeyDown(dashKey) && canDash)
         {
             Dash();
+            
         }
     }
 
@@ -59,6 +62,7 @@ public class LightSpeedDash : MonoBehaviour
         if (dashTrail != null)
         {   
             dashTrail.enabled = true;
+            dahsTrailHolder.SetActive(true);
         } 
 
         
@@ -80,6 +84,7 @@ public class LightSpeedDash : MonoBehaviour
         if (dashTrail != null)
         {
             dashTrail.enabled = false;
+            dahsTrailHolder.SetActive(false);
             dashTrail.Clear();
         } 
 
