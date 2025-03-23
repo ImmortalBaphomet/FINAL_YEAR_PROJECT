@@ -14,12 +14,16 @@ public class Player_Movement : MonoBehaviour
     private Quaternion targetRotation;
 
     public Animator playerAnim;
+    private ParticleSystem footTrail;
+    private Vector3 lastPos;
 
     private void Start()
     {
         playerAnim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         targetRotation = transform.rotation; // Set the initial rotation
+        footTrail = GetComponentInChildren<ParticleSystem>();
+        lastPos = transform.position;
     }
 
     private void Update()
@@ -52,5 +56,25 @@ public class Player_Movement : MonoBehaviour
 
         // Apply movement
         characterController.Move(moveDirection * Time.deltaTime);
+
+        HandleLightTrail();
+    }
+
+    void HandleLightTrail()
+    {
+        // Check if the player is moving
+        if (Vector3.Distance(transform.position, lastPos) > 0.01f)
+        {
+            if (!footTrail.isEmitting)
+                footTrail.Play();
+        }
+        else
+        {
+            if (footTrail.isEmitting)
+                footTrail.Stop();
+        }
+
+        // Update last position
+        lastPos = transform.position;
     }
 }

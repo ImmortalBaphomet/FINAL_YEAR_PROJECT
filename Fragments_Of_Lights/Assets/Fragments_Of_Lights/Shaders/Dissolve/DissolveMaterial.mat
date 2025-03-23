@@ -52,14 +52,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutOffHeight: 3.44
-    - _EdgeWidth: 20.24
-    - _NoiseScale: 50
-    - _NoiseStrength: 1
+    - _CutOffHeight: 3.1
+    - _EdgeWidth: 26.2
+    - _NoiseScale: 21.3
+    - _NoiseStrength: 14.32
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Albedo: {r: 0.43752825, g: 0.4528302, b: 0.14311142, a: 1}
-    - _EdgeColor: {r: 2.2889774, g: 0.22769932, b: 0, a: 0}
+    - _Albedo: {r: 0, g: 0, b: 0, a: 1}
+    - _EdgeColor: {r: 2.2889776, g: 0, b: 0.46491364, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
