@@ -842,17 +842,17 @@ PrefabInstance:
     - target: {fileID: 4438359939071121637, guid: f3720683f0983474fae89d9daf0446ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438359939071121637, guid: f3720683f0983474fae89d9daf0446ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08
+      value: 0.784
       objectReference: {fileID: 0}
     - target: {fileID: 4438359939071121637, guid: f3720683f0983474fae89d9daf0446ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438359939071121637, guid: f3720683f0983474fae89d9daf0446ac,
         type: 3}
@@ -902,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 6537663829793437994, guid: f3720683f0983474fae89d9daf0446ac,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6537663829793437994, guid: f3720683f0983474fae89d9daf0446ac,
         type: 3}
@@ -3139,6 +3139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425316029483090611, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
+      propertyPath: jumpForce
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425316029483090611, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
       propertyPath: lowGravity
       value: -2
       objectReference: {fileID: 0}
@@ -3146,6 +3151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: highGravity
       value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425316029483090611, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: fallModifier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1558743218617292393, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}

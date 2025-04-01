@@ -14,7 +14,7 @@ public class Player_Movement : MonoBehaviour
     private Quaternion targetRotation;
 
     public Animator playerAnim;
-    private ParticleSystem footTrail;
+    private /* ParticleSystem */ TrailRenderer footTrail;
     private Vector3 lastPos;
 
     private void Start()
@@ -22,7 +22,7 @@ public class Player_Movement : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         targetRotation = transform.rotation; // Set the initial rotation
-        footTrail = GetComponentInChildren<ParticleSystem>();
+        footTrail = GetComponentInChildren<TrailRenderer>();
         lastPos = transform.position;
     }
 
@@ -57,24 +57,24 @@ public class Player_Movement : MonoBehaviour
         // Apply movement
         characterController.Move(moveDirection * Time.deltaTime);
 
-        HandleLightTrail();
+        //HandleLightTrail();
     }
 
-    void HandleLightTrail()
+    /* void HandleLightTrail()
     {
         // Check if the player is moving
         if (Vector3.Distance(transform.position, lastPos) > 0.01f)
         {
-            if (!footTrail.isEmitting)
-                footTrail.Play();
+            if (!footTrail.emitting)
+                footTrail.;
         }
         else
         {
-            if (footTrail.isEmitting)
+            if (footTrail.emitting)
                 footTrail.Stop();
         }
 
         // Update last position
         lastPos = transform.position;
-    }
+    } */
 }
