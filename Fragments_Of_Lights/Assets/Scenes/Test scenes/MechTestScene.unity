@@ -2994,7 +2994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fe28fe0ed484fdeb52fe5fc4e7e4bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSpearActivate: 0
+  wallSpearActivate: 1
   spears:
   - {fileID: 1541982556}
   - {fileID: 142809787}
