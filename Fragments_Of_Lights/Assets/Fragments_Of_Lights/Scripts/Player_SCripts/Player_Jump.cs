@@ -20,6 +20,7 @@ public class Player_Jump : MonoBehaviour
 
     private CharacterController characterController;
     private Color_Change color_Change;
+    public bool isviolet;
     private Animator playerAnim;
     private Vector3 velocity;
     [SerializeField] private bool isGrounded, isJumping, isFalling;
@@ -43,7 +44,9 @@ public class Player_Jump : MonoBehaviour
         HandleJump();
         
         characterController.Move(velocity * Time.deltaTime);
+        
     }
+    
 
     private void GroundCheck()
     {
@@ -96,7 +99,7 @@ public class Player_Jump : MonoBehaviour
         {
             lowGravityZone = true;
             gravityMod = lowGravity;
-            Debug.Log("Gravity set to LOW: " + gravityMod);
+            Debug.Log("Gravity set to LOW: " + gravityMod + "Player color is " + color_Change.isViolet);
         }
         else if (other.CompareTag(RED_AREA) && color_Change.isRed)
         {

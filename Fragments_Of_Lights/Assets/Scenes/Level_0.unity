@@ -3155,7 +3155,7 @@ PrefabInstance:
     - target: {fileID: 1425316029483090611, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: fallModifier
-      value: 2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1558743218617292393, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}

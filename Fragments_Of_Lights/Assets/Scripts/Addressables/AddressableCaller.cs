@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -8,6 +5,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class AddressableCaller : MonoBehaviour
 {
     [SerializeField] AssetReferenceGameObject _ptOne;
+    
 
     // Update is called once per frame
     void Update()
