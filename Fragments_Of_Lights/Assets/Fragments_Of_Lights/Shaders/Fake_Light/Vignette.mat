@@ -74,11 +74,8 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-<<<<<<< Updated upstream
-    - _intensity: 10
-=======
-    - _intensity: 9.917625
->>>>>>> Stashed changes
+    - _intensity: 3.421097e-11
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
