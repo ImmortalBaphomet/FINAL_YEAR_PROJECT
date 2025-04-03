@@ -10,7 +10,7 @@ public class LightScan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scan.Stop();
+        scan.Stop(); 
         //scan = GetComponentInChildren<ParticleSystem>();
         scanCollision = new List<ParticleCollisionEvent>();
     }
