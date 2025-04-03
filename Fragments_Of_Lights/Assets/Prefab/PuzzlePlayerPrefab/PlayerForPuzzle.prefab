@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 3984403484139169509}
   - component: {fileID: 8034160092521074332}
   - component: {fileID: 7169716330973476608}
+  - component: {fileID: 8034996167028053365}
   - component: {fileID: 3460179224694639710}
   - component: {fileID: 1686450632978373041}
   - component: {fileID: 5026233541719428764}
@@ -242,6 +243,7 @@ GameObject:
   - component: {fileID: 6542251829072066891}
   - component: {fileID: 5973118305599002374}
   - component: {fileID: 4152898342486019668}
+  - component: {fileID: 2917846992822190028}
   m_Layer: 0
   m_Name: PlayerForPuzzle
   m_TagString: Player
@@ -317,6 +319,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!114 &8034996167028053365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389006266248747186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 300c17f424b744205bc30ce2e2775f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMesh: {fileID: 4287558401877435513}
+  dissolveRate: 0.0125
+  refreshRate: 0.025
+  skinMat:
+  - {fileID: 2100000, guid: 9f0d7ebc845d6431aa21eed13074e9bf, type: 2}
+  - {fileID: 2100000, guid: 79f8776c1230c42c78d83b7776e4f07f, type: 2}
 --- !u!114 &3460179224694639710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  defSpeed: 0
+  pGrab: {fileID: 0}
   rotationSpeed: 10
   playerAnim: {fileID: 8034160092521074332}
 --- !u!114 &1686450632978373041
@@ -345,16 +367,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 1.5
-  gravity: -9.81
+  defaultGravity: -20
   lowGravity: -5
   highGravity: -20
+  fallModifier: 0
   lowGravityZone: 0
-  HighGravityZone: 0
+  highGravityZone: 0
   groundCheck: {fileID: 4168061463501130566}
   groundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  isviolet: 0
+  isGrounded: 0
+  isJumping: 0
+  isFalling: 0
 --- !u!114 &5026233541719428764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +472,24 @@ MonoBehaviour:
   dahsTrailHolder: {fileID: 7238877787961392489}
   playerRenderer: {fileID: 4287558401877435513}
   canDash: 1
+--- !u!114 &2917846992822190028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389006266248747186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365b947cfe794e4da9413b19117d805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  grabKey: 102
+  rotateClockwiseKey: 99
+  rotateCounterClockwiseKey: 118
+  reqSpeed: 0
+  isGrabbing: 0
 --- !u!1 &1419452090159169374
 GameObject:
   m_ObjectHideFlags: 0

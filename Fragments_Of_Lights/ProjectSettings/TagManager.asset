@@ -12,6 +12,7 @@ TagManager:
   - RedArea
   - Refractor
   - LazerEnd
+  - Grabbable
   layers:
   - Default
   - TransparentFX

@@ -476,17 +476,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 1.5
-  gravity: -9.81
+  defaultGravity: -20
   lowGravity: -5
   highGravity: -20
-  gravityMod: 0
+  fallModifier: 0
   lowGravityZone: 0
-  HighGravityZone: 0
+  highGravityZone: 0
   groundCheck: {fileID: 4147664960371681801}
   groundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  isviolet: 0
+  isGrounded: 0
+  isJumping: 0
+  isFalling: 0
 --- !u!114 &6582284965903514040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,8 +577,8 @@ MonoBehaviour:
   dashCooldown: 2
   dashDuration: 0.4
   dashKey: 304
-  dashTrail: {fileID: 0}
-  dahsTrailHolder: {fileID: 0}
+  dashTrail: {fileID: 5563899065588418806}
+  dahsTrailHolder: {fileID: 6871366959066706328}
   playerRenderer: {fileID: 3634473833244967458}
   canDash: 1
 --- !u!1 &2193477899658642673
@@ -953,7 +957,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1579580529995191152}
   - component: {fileID: 3634473833244967458}
-  - component: {fileID: 4270647238566842370}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1070,20 +1073,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00042805076, y: -0.003991604, z: 0.020528369}
     m_Extent: {x: 0.6268662, y: 0.7832205, z: 0.20510677}
   m_DirtyAABB: 0
---- !u!114 &4270647238566842370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3593991032273028241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29611bd5afcb9224aa3baff37a3e2082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scan: {fileID: 4790244913516746220}
-  scanKey: 116
 --- !u!1 &3610261793964483984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,12 +2670,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ede703e5b7444d5fa9b553bd9cf3134, type: 3}
---- !u!198 &4790244913516746220 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 973121713667386607, guid: 8ede703e5b7444d5fa9b553bd9cf3134,
-    type: 3}
-  m_PrefabInstance: {fileID: 5763313760958986499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9196503971697190654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3484639284775772157, guid: 8ede703e5b7444d5fa9b553bd9cf3134,
