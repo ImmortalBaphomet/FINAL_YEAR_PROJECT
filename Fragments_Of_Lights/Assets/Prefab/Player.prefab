@@ -477,7 +477,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 1.5
   gravity: -9.81
-  playerAnim: {fileID: 1304051304255214041}
+  lowGravity: -5
+  highGravity: -20
+  gravityMod: 0
+  lowGravityZone: 0
+  HighGravityZone: 0
   groundCheck: {fileID: 4147664960371681801}
   groundDistance: 0.2
   groundMask:
@@ -538,7 +542,7 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: 56c4b521412a50c46a3f5d5a4fe2c390, type: 2}
   colorChangeDuration: 2
   isRed: 0
-  isGreen: 0
+  isViolet: 0
 --- !u!114 &4753157142216007246
 MonoBehaviour:
   m_ObjectHideFlags: 0

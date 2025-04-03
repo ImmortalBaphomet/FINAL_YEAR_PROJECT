@@ -14,17 +14,25 @@ public class Player_Movement : MonoBehaviour
     private Quaternion targetRotation;
 
     public Animator playerAnim;
+    private /* ParticleSystem */ TrailRenderer footTrail;
+    private Vector3 lastPos;
 
     private void Start()
     {
         playerAnim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         targetRotation = transform.rotation; // Set the initial rotation
+        footTrail = GetComponentInChildren<TrailRenderer>();
+        lastPos = transform.position;
     }
 
     private void Update()
     {
-        // Get horizontal and vertical input (A/D, W/S or Arrow Keys)
+        HandleMove();
+    }
+    void HandleMove()
+    {
+         // Get horizontal and vertical input (A/D, W/S or Arrow Keys)
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -48,5 +56,25 @@ public class Player_Movement : MonoBehaviour
 
         // Apply movement
         characterController.Move(moveDirection * Time.deltaTime);
+
+        //HandleLightTrail();
     }
+
+    /* void HandleLightTrail()
+    {
+        // Check if the player is moving
+        if (Vector3.Distance(transform.position, lastPos) > 0.01f)
+        {
+            if (!footTrail.emitting)
+                footTrail.;
+        }
+        else
+        {
+            if (footTrail.emitting)
+                footTrail.Stop();
+        }
+
+        // Update last position
+        lastPos = transform.position;
+    } */
 }

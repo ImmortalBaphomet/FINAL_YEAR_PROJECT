@@ -9,9 +9,9 @@ public class Color_Change : MonoBehaviour
     [Header("Color Settings")]
     private Color whiteColor; // Default color (white)
     private Color redColor; // Red color (hex)
-    private Color greenColor; // Green color (hex)
+    private Color violetColor; // Green color (hex)
     private Color outlineRedColor; // Outline color for red
-    private Color outlineGreenColor; // Outline color for green
+    private Color outlineVioletColor; // Outline color for green
     private Color outlineWhiteColor; // Outline color for white
     private Color currentColor; // Current color of the player
 
@@ -20,7 +20,7 @@ public class Color_Change : MonoBehaviour
     private float colorChangeTimer = 0f; // Timer to track color change duration
 
     public bool isRed = false; // Boolean to check if player color is red
-    public bool isGreen = false; // Boolean to check if player color is green
+    public bool isViolet = false; // Boolean to check if player color is green
     private bool canSwitchColor = true; // Flag to control when the player can switch colors
 
     private Prism_Collection prismScript; // Reference to the Prism_Collection script
@@ -30,11 +30,11 @@ public class Color_Change : MonoBehaviour
         // Convert Hex color to Unity Color
         whiteColor = HexToColor("#FFFFFF"); // White color
         redColor = HexToColor("#A0153E"); // Red color
-        greenColor = HexToColor("#D2FF72"); // Green color
+        violetColor = HexToColor("#7F00FF"); // Violet Color
         // Outline colors
         outlineWhiteColor = HexToColor("#FFF3D1"); // White outline color (hex)
         outlineRedColor = HexToColor("#FF2A68"); // Red outline color (hex)
-        outlineGreenColor = HexToColor("#FFFFFF"); // Green outline color (hex)
+        outlineVioletColor = HexToColor("#7F00FF"); // Violet outline color (hex)
 
         currentColor = whiteColor;
         playerMaterial.SetColor("_Color", currentColor); // Apply color to material
@@ -58,7 +58,7 @@ public class Color_Change : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
-                    UsePrismAndChangeColor(greenColor, outlineGreenColor); 
+                    UsePrismAndChangeColor(violetColor, outlineVioletColor); 
                 }
             }
         }
@@ -110,17 +110,17 @@ public class Color_Change : MonoBehaviour
         if (newColor == redColor)
         {
             isRed = true;
-            isGreen = false;
+            isViolet = false;
         }
-        else if (newColor == greenColor)
+        else if (newColor == violetColor)
         {
-            isGreen = true;
+            isViolet = true;
             isRed = false;
         }
         else
         {
             isRed = false;
-            isGreen = false;
+            isViolet = false;
         }
         colorChangeTimer = colorChangeDuration;
         canSwitchColor = false;
@@ -140,7 +140,7 @@ public class Color_Change : MonoBehaviour
         }
 
         isRed = false;
-        isGreen = false;
+        isViolet = false;
 
         canSwitchColor = true;
 

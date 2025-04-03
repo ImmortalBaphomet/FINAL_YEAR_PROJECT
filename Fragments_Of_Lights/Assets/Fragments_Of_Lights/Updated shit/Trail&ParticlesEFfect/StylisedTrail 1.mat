@@ -26,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainText:
-        m_Texture: {fileID: 2800000, guid: e16a3b51b1cc447fd867c5b8f9fb75cb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35c627254464644ebbe0e4a069717e9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -43,13 +43,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DefaultScale: 50
+    - _DefaultScale: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color1: {r: 3.8393579, g: 0.5627044, b: 0, a: 1}
-    - _Color2: {r: 333.8545, g: 132.32904, b: 0, a: 1}
-    - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
+    - _Color1: {r: 1.4980392, g: 0.49592102, b: 0.035331108, a: 1}
+    - _Color2: {r: 1.4980395, g: 1.3958908, b: 0, a: 1}
+    - _DissolveSpeed: {r: 15, g: 4, b: 0, a: 0}
     - _MainTextSpeed: {r: 0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
