@@ -44,7 +44,7 @@ public class Pause_Menu_Script : MonoBehaviour
     {
      
         // Reload the current scene
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         
         // Optionally log the reload for debugging
         Debug.Log("Scene Reloaded");
@@ -74,7 +74,7 @@ public class Pause_Menu_Script : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////////////////
     public void Back_Button()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
 }

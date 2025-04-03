@@ -12,6 +12,12 @@ TagManager:
   - RedArea
   - Refractor
   - LazerEnd
+  - Start
+  - Option
+  - Quit
+  - Credits
+  - Glass
+  - Gate
   layers:
   - Default
   - TransparentFX
