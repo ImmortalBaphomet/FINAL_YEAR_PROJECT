@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Callbacks;
+//dddusing UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Player_Jump : MonoBehaviour
