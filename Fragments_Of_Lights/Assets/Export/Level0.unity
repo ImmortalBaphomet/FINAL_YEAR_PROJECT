@@ -9312,8 +9312,8 @@ MonoBehaviour:
   dashCooldown: 2
   dashDuration: 0.4
   dashKey: 304
-  dashTrail: {fileID: 0}
-  dahsTrailHolder: {fileID: 0}
+  dashTrail: {fileID: 1558743218398230858}
+  dahsTrailHolder: {fileID: 6871366959285509819}
   playerRenderer: {fileID: 3634473832524524801}
   canDash: 1
 --- !u!33 &3312201248860290462
@@ -12605,7 +12605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953252638658205400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a936e3ae5213bd4a85ecec2d8e1d4cb, type: 3}
   m_Name: 
@@ -26868,7 +26868,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953252638658205400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad0441b9b6819ca44ac5019e08574e8a, type: 3}
   m_Name: 
