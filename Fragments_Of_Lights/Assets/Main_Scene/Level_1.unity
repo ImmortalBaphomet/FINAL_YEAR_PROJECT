@@ -7429,6 +7429,7 @@ GameObject:
   - component: {fileID: 8868501510915221923}
   - component: {fileID: 4753157142938268013}
   - component: {fileID: 3309453750811052094}
+  - component: {fileID: 9011740271360757552}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30376,6 +30377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  defSpeed: 0
+  pGrab: {fileID: 9011740271360757552}
   rotationSpeed: 10
   playerAnim: {fileID: 1304051304977612538}
 --- !u!223 &8712527091149631224
@@ -31104,6 +31107,24 @@ MonoBehaviour:
   ultimateDuration: 10
   idleDelay: 4
   failarea: {fileID: 4633491649992281632}
+--- !u!114 &9011740271360757552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953252638658205400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365b947cfe794e4da9413b19117d805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 100
+  grabKey: 102
+  rotateClockwiseKey: 101
+  rotateCounterClockwiseKey: 113
+  reqSpeed: 0
+  isGrabbing: 0
 --- !u!114 &9015972185005608325
 MonoBehaviour:
   m_ObjectHideFlags: 0

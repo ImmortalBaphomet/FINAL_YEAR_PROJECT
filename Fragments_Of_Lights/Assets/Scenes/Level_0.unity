@@ -3220,6 +3220,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155656438}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1172290403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6871366959066706328, guid: 25a8f5189ddcc4c609adb7844db6c628,
+    type: 3}
+  m_PrefabInstance: {fileID: 4844457593781547096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1260372418
 GameObject:
   m_ObjectHideFlags: 0
@@ -11902,11 +11908,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1425316029483090611, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: fallModifier
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1953252638976276987, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3309453750056920861, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309453750056920861, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: dashTrailHolder
+      value: 
+      objectReference: {fileID: 1172290403}
     - target: {fileID: 3615373730949438829, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11976,6 +11997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711577256478810375, guid: 25a8f5189ddcc4c609adb7844db6c628,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8868501511803143808, guid: 25a8f5189ddcc4c609adb7844db6c628,
         type: 3}
