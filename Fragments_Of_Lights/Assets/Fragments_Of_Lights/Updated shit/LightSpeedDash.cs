@@ -1,38 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LightSpeedDash : MonoBehaviour
 {
     [Header("Dash Settings")]
-    [SerializeField] private float dashDistance = 10f; 
-    [SerializeField] private float dashCooldown = 2f; 
-    [SerializeField] private float dashDuration = 0.2f; 
+    [SerializeField] private float dashDistance = 10f;
+    [SerializeField] private float dashCooldown = 2f;
+    [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private KeyCode dashKey;
-
 
     [Header("Trail Effect")]
     [SerializeField] private TrailRenderer dashTrail;
-    [SerializeField] private GameObject dahsTrailHolder; 
-    [SerializeField] private Renderer playerRenderer; 
+    [SerializeField] private GameObject dashTrailHolder;
+    [SerializeField] private Renderer playerRenderer;
 
-    public bool canDash = true;
+    [Header("Collision Settings")]
+    [SerializeField] private LayerMask obstacleLayers;  // Everything except "Trap"
+    [SerializeField] private float dashCollisionRadius = 0.5f;  // Adjust based on player size
+
+    private bool canDash = true;
     private Vector3 dashDirection;
+    private CharacterController controller;
 
-    // Start is called before the first frame update
     void Start()
     {
         canDash = true;
-        dahsTrailHolder.SetActive(false); 
+        dashTrailHolder.SetActive(false);
+        controller = GetComponent<CharacterController>(); // Ensure CharacterController is attached
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(dashKey) && canDash)
         {
             Dash();
-            
         }
     }
 
@@ -40,61 +41,62 @@ public class LightSpeedDash : MonoBehaviour
     {
         if (!canDash) return;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        // Calculate direction
+        if (Input.GetKey(KeyCode.Space))
         {
-            dashDirection = (transform.forward + Vector3.up) * dashDistance; 
+            dashDirection = (transform.forward + Vector3.up).normalized;
         }
-        else{
-            dashDirection = transform.forward * dashDistance; 
+        else
+        {
+            dashDirection = transform.forward.normalized;
         }
-        
-        Vector3 dashTarget = transform.position + dashDirection;
 
-        
-        StartCoroutine(PerformDash(dashTarget));
+        StartCoroutine(PerformDash());
     }
 
-     private IEnumerator PerformDash(Vector3 targetPosition)
+    private IEnumerator PerformDash()
     {
-        
         canDash = false;
         playerRenderer.enabled = false;
-        if (dashTrail != null)
-        {   
-            dashTrail.enabled = true;
-            dahsTrailHolder.SetActive(true);
-        } 
 
-        
+        if (dashTrail != null)
+        {
+            dashTrail.enabled = true;
+            dashTrailHolder.SetActive(true);
+        }
+
         float elapsedTime = 0f;
-        Vector3 startPosition = transform.position;
+        float dashSpeed = dashDistance / dashDuration;
 
         while (elapsedTime < dashDuration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / dashDuration);
+            float moveStep = dashSpeed * Time.deltaTime;
+            Vector3 nextPosition = transform.position + dashDirection * moveStep;
+
+            // **SphereCast to check for obstacles mid-dash**
+            if (Physics.SphereCast(transform.position, dashCollisionRadius, dashDirection, out RaycastHit hit, moveStep, obstacleLayers))
+            {
+                // Stop at the point of collision
+                nextPosition = hit.point;
+                break;
+            }
+
+            // Move with CharacterController
+            controller.Move(dashDirection * moveStep);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-     
-        transform.position = targetPosition;
-
-        
         playerRenderer.enabled = true;
         if (dashTrail != null)
         {
             dashTrail.enabled = false;
-            dahsTrailHolder.SetActive(false);
+            dashTrailHolder.SetActive(false);
             dashTrail.Clear();
-        } 
+        }
 
-        // Start cooldown timer
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-
-
 }
-
-/*
-*/

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
-    public float rotationSpeed = 10f;
+    [SerializeField] private float defSpeed;
 
+    [SerializeField] private PlayerGrab pGrab;
+    public float rotationSpeed = 10f;
+    private float refFloat;
     private CharacterController characterController;
     private Vector3 moveDirection;
     private Quaternion targetRotation;
@@ -21,60 +23,60 @@ public class Player_Movement : MonoBehaviour
     {
         playerAnim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        pGrab = GetComponent<PlayerGrab>();
         targetRotation = transform.rotation; // Set the initial rotation
         footTrail = GetComponentInChildren<TrailRenderer>();
         lastPos = transform.position;
+        defSpeed = moveSpeed;
     }
 
     private void Update()
     {
+        if (pGrab.isGrabbing)
+        {
+            HandleRotation(); // Allow rotation while grabbing
+            return; // Prevent movement while grabbing
+        }
+        
         HandleMove();
     }
+
     void HandleMove()
     {
-         // Get horizontal and vertical input (A/D, W/S or Arrow Keys)
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate movement direction and reset to zero if no input is given
         if (horizontalInput != 0 || verticalInput != 0)
         {
             moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized * moveSpeed;
 
-            // Smooth rotation (flip) based on movement direction
             targetRotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0f, verticalInput));
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            playerAnim.SetBool("Run",true);
+            
+            playerAnim.SetBool("Run", true);
         }
         else
         {
-            moveDirection = Vector3.zero; // Stop moving when no input
+            moveDirection = Vector3.zero;
             playerAnim.SetBool("Run", false);
-
         }
 
-        // Apply movement
         characterController.Move(moveDirection * Time.deltaTime);
-
-        //HandleLightTrail();
     }
 
-    /* void HandleLightTrail()
+    void HandleRotation()
     {
-        // Check if the player is moving
-        if (Vector3.Distance(transform.position, lastPos) > 0.01f)
+        float rotationInput = 0;
+
+        if (Input.GetKey(KeyCode.E))
         {
-            if (!footTrail.emitting)
-                footTrail.;
+            rotationInput = rotationSpeed * Time.deltaTime;
         }
-        else
+        else if (Input.GetKey(KeyCode.Q))
         {
-            if (footTrail.emitting)
-                footTrail.Stop();
+            rotationInput = -rotationSpeed * Time.deltaTime;
         }
 
-        // Update last position
-        lastPos = transform.position;
-    } */
+        transform.Rotate(Vector3.up * rotationInput);
+    }
 }
