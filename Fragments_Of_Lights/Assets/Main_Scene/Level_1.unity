@@ -2603,7 +2603,7 @@ GameObject:
   - component: {fileID: 1890738595}
   m_Layer: 0
   m_Name: SpikeTrap
-  m_TagString: Fail_Area
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11024,9 +11024,12 @@ MonoBehaviour:
   dashDuration: 0.4
   dashKey: 304
   dashTrail: {fileID: 1558743218398230858}
-  dahsTrailHolder: {fileID: 6871366959285509819}
+  dashTrailHolder: {fileID: 6871366959285509819}
   playerRenderer: {fileID: 3634473832524524801}
-  canDash: 1
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  dashCollisionRadius: 0.5
 --- !u!33 &3312201248860290462
 MeshFilter:
   m_ObjectHideFlags: 0
