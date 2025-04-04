@@ -14,10 +14,10 @@ public class Pause_Menu_Script : MonoBehaviour
 
     private void Start()
     {
-        
+        Time.timeScale = 1f;  // Ensure the game starts unpaused in all scenes
         ControlMenuUI.SetActive(false);
-        
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -37,18 +37,17 @@ public class Pause_Menu_Script : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////////////
     public void NextChapter()
     {
-        SceneManager.LoadScene(3);
+        //if(SceneManager.GetActiveScene().buildIndex == ) 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     public void Play_Again()
     {
-     
-        // Reload the current scene
-        SceneManager.LoadScene(1);
-        
-        // Optionally log the reload for debugging
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
+        Time.timeScale = 1f; // Ensure time scale is reset
         Debug.Log("Scene Reloaded");
     }
+
     ///////////////////////////////////////////////////////////////////////////////////////////
     public void ResumeGame()
     {
@@ -59,7 +58,7 @@ public class Pause_Menu_Script : MonoBehaviour
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true); 
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;// 
         isPaused = true;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +74,7 @@ public class Pause_Menu_Script : MonoBehaviour
     public void Back_Button()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
 }

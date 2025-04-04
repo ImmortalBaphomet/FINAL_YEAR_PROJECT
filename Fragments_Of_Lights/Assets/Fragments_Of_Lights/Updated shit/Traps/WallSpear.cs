@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallSpear : TrapMaster
+public class WallSpear : MonoBehaviour
 {
     public bool wallSpearActivate = false;
-    [SerializeField] private List<GameObject> spears; 
+    [SerializeField] private List<GameObject> spears;
     [SerializeField] private float spearDelay = 0.5f; // time delay between each spear thrust
     [SerializeField] private float thrustDistance = 2f; // distance of each spear thrusts out
     [SerializeField] private float thrustSpeed = 2f;//spear thrust speed
@@ -14,8 +14,8 @@ public class WallSpear : TrapMaster
 
     void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -26,21 +26,21 @@ public class WallSpear : TrapMaster
             spearRestPositions.Add(spear.transform.position);
         }
 
-       if (wallSpearActivate)
+        if (wallSpearActivate)
         {
-             
+
             StartCoroutine(SpearWallTrap());
         }
     }
 
-    public override void Activate()
-    {
-        wallSpearActivate = true;
-    }
-    public override void Deactivate()// not implemented the logic for this yet
-    {
-        wallSpearActivate = false;
-    }
+    //public override void Activate()
+    //{
+    //    wallSpearActivate = true;
+    //}
+    //public override void Deactivate()// not implemented the logic for this yet
+    //{
+    //    wallSpearActivate = false;
+    //}
 
     IEnumerator SpearWallTrap()
     {
@@ -53,18 +53,18 @@ public class WallSpear : TrapMaster
 
     IEnumerator ThrustSpear(GameObject spear, Vector3 restPosition)
     {
-        Vector3 thrustPosition = restPosition + spear.transform.up * thrustDistance;// from rest to the thrustdistance point b.
+        Vector3 thrustPosition = restPosition + spear.transform.forward * thrustDistance;// from rest to the thrustdistance point b.
 
-        
+
         while (Vector3.Distance(spear.transform.position, thrustPosition) > 0.01f)
         {
             spear.transform.position = Vector3.MoveTowards(spear.transform.position, thrustPosition, thrustSpeed * Time.deltaTime);
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.5f);
 
-        
+
         while (Vector3.Distance(spear.transform.position, restPosition) > 0.01f)
         {
             spear.transform.position = Vector3.MoveTowards(spear.transform.position, restPosition, thrustSpeed * Time.deltaTime);
@@ -72,7 +72,5 @@ public class WallSpear : TrapMaster
         }
     }
 
-    
+
 }
-/*
-*/
