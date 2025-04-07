@@ -6,6 +6,8 @@ public class Player_Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    float horizontalInput;
+    float verticalInput;
     [SerializeField] private float defSpeed;
 
     [SerializeField] private PlayerGrab pGrab;
@@ -30,23 +32,25 @@ public class Player_Movement : MonoBehaviour
         defSpeed = moveSpeed;
     }
 
-    private void Update()
+    
+    void Update()
     {
         if (pGrab.isGrabbing)
         {
             HandleRotation(); // Allow rotation while grabbing
             return; // Prevent movement while grabbing
         }
-        
+
         HandleMove();
+
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
     }
 
     void HandleMove()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        if (horizontalInput != 0 || verticalInput != 0)
+        
+        if (horizontalInput >= 0.01f || verticalInput >= 0.01f || horizontalInput <= -0.01f || verticalInput <= -0.01f)
         {
             moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized * moveSpeed;
 
@@ -55,7 +59,7 @@ public class Player_Movement : MonoBehaviour
             
             playerAnim.SetBool("Run", true);
         }
-        else
+        else if(horizontalInput <= 0.01f || verticalInput <= 0.01f || horizontalInput >= -0.01f || verticalInput >= -0.01f)
         {
             moveDirection = Vector3.zero;
             playerAnim.SetBool("Run", false);
