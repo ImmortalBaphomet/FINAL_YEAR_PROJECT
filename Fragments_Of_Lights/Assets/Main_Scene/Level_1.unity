@@ -10231,14 +10231,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179d301965ad04f09865b96604c5f09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDistance: 6
-  dashCooldown: 2
-  dashDuration: 0.4
+  dashDistance: 7
+  dashCooldown: 1
+  dashDuration: 0.5
   dashKey: 304
   dashTrail: {fileID: 1558743218398230858}
-  dahsTrailHolder: {fileID: 6871366959285509819}
+  dashTrailHolder: {fileID: 6871366959285509819}
   playerRenderer: {fileID: 3634473832524524801}
-  canDash: 1
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  dashCollisionRadius: 0.5
 --- !u!33 &3312201248860290462
 MeshFilter:
   m_ObjectHideFlags: 0
