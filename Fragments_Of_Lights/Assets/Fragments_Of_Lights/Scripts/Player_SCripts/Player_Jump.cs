@@ -60,6 +60,14 @@ public class Player_Jump : MonoBehaviour
             SetAnimationStates(true, false, false); // Grounded, not jumping, not falling
         }
     }
+    private void OnDrawGizmos()
+{
+    if (groundCheck != null)
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
+    }
+}
 
     private void HandleJump()
     {
