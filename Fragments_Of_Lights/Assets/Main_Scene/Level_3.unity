@@ -1388,9 +1388,12 @@ MonoBehaviour:
   dashDuration: 0.4
   dashKey: 304
   dashTrail: {fileID: 7042945739838959226}
-  dahsTrailHolder: {fileID: 8345344633994467092}
+  dashTrailHolder: {fileID: 0}
   playerRenderer: {fileID: 2232483441103987886}
-  canDash: 1
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  dashCollisionRadius: 0.5
 --- !u!1 &183900319977920207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3645,7 @@ GameObject:
   - component: {fileID: 6311898568017813516}
   - component: {fileID: 7889737351085193410}
   - component: {fileID: 101027301949374865}
+  - component: {fileID: 8856457822595134275}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4785,6 +4789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  defSpeed: 0
+  pGrab: {fileID: 8856457822595134275}
   rotationSpeed: 10
   playerAnim: {fileID: 4509100131839211349}
 --- !u!1 &6187111394253977249
@@ -10877,6 +10883,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!114 &8856457822595134275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003763292248170359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365b947cfe794e4da9413b19117d805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 100
+  grabKey: 102
+  rotateClockwiseKey: 101
+  rotateCounterClockwiseKey: 113
+  reqSpeed: 0
+  isGrabbing: 0
 --- !u!1 &8860034923174533465
 GameObject:
   m_ObjectHideFlags: 0

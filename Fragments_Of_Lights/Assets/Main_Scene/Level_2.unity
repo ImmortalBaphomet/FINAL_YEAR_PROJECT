@@ -1762,6 +1762,92 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472990162}
   m_Mesh: {fileID: 1362691541709708171, guid: c7ff5a56c36b84066a83ef9ade71cce0, type: 3}
+--- !u!1001 &481649436
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792214427978391509, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerF
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79b3983322432456a8421b9af3ce4ed3, type: 3}
+--- !u!114 &481649437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3537268893331627852, guid: 79b3983322432456a8421b9af3ce4ed3,
+    type: 3}
+  m_PrefabInstance: {fileID: 481649436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365b947cfe794e4da9413b19117d805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &481649438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4513354158887575486, guid: 79b3983322432456a8421b9af3ce4ed3,
+    type: 3}
+  m_PrefabInstance: {fileID: 481649436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &490774758
 GameObject:
   m_ObjectHideFlags: 0
@@ -13828,6 +13914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  defSpeed: 0
+  pGrab: {fileID: 481649437}
   rotationSpeed: 10
   playerAnim: {fileID: 4829922705822830533}
 --- !u!114 &3029939585274026140
@@ -17009,7 +17097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5334581334630309043
 Transform:
   m_ObjectHideFlags: 0
@@ -21984,14 +22072,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179d301965ad04f09865b96604c5f09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDistance: 5
+  dashDistance: 7
   dashCooldown: 2
-  dashDuration: 0.2
+  dashDuration: 0.5
   dashKey: 304
   dashTrail: {fileID: 689448630792825884}
-  dahsTrailHolder: {fileID: 4026182869909740006}
+  dashTrailHolder: {fileID: 481649438}
   playerRenderer: {fileID: 7165086738114239550}
-  canDash: 1
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  dashCollisionRadius: 0.5
 --- !u!4 &9033981760062470909
 Transform:
   m_ObjectHideFlags: 0
@@ -22192,6 +22283,7 @@ SceneRoots:
   - {fileID: 3656543185905506337}
   - {fileID: 502820242}
   - {fileID: 7148300696484873073}
+  - {fileID: 481649436}
   - {fileID: 1293932595}
   - {fileID: 1745965964}
   - {fileID: 1422547309}
