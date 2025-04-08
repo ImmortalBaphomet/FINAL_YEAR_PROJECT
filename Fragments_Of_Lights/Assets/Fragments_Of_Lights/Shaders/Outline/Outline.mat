@@ -54,7 +54,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Size: 0.005
+    - _Size: 0.017
     m_Colors:
     - _Color: {r: 1, g: 0.9529412, b: 0.81960785, a: 1}
     - _OutlineColor: {r: 1, g: 0.9529412, b: 0.81960785, a: 1}
