@@ -22744,30 +22744,15 @@ PrefabInstance:
       propertyPath: FailMenuUI
       value: 
       objectReference: {fileID: 4633491649992281632}
-    - target: {fileID: 869332378973365071, guid: 79b3983322432456a8421b9af3ce4ed3,
-        type: 3}
-      propertyPath: defSpeed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1123521517114192867, guid: 79b3983322432456a8421b9af3ce4ed3,
         type: 3}
       propertyPath: failarea
       value: 
       objectReference: {fileID: 4633491649992281632}
-    - target: {fileID: 1529793548364214862, guid: 79b3983322432456a8421b9af3ce4ed3,
+    - target: {fileID: 1455667088301761534, guid: 79b3983322432456a8421b9af3ce4ed3,
         type: 3}
-      propertyPath: groundDistance
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1590786228637225383, guid: 79b3983322432456a8421b9af3ce4ed3,
-        type: 3}
-      propertyPath: dashDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5336360388492916041, guid: 79b3983322432456a8421b9af3ce4ed3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.131
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
         type: 3}
