@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//dddusing UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Player_Jump : MonoBehaviour
@@ -60,14 +59,7 @@ public class Player_Jump : MonoBehaviour
             SetAnimationStates(true, false, false); // Grounded, not jumping, not falling
         }
     }
-    private void OnDrawGizmos()
-{
-    if (groundCheck != null)
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
-    }
-}
+    
 
     private void HandleJump()
     {
@@ -98,7 +90,6 @@ public class Player_Jump : MonoBehaviour
         playerAnim.SetBool("Is_Jumping", jumping);
         playerAnim.SetBool("Is_Falling", falling);
     }
-
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Entered gravity zone: " + other.gameObject.tag);
@@ -116,7 +107,6 @@ public class Player_Jump : MonoBehaviour
             Debug.Log("Gravity set to HIGH: " + gravityMod);
         }
     }
-
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
@@ -128,7 +118,6 @@ public class Player_Jump : MonoBehaviour
             gravityMod = highGravity;
         }
     }
-
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
@@ -144,6 +133,15 @@ public class Player_Jump : MonoBehaviour
         {
             gravityMod = defaultGravity;
             Debug.Log("Gravity reset to NORMAL: " + gravityMod);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
         }
     }
 
