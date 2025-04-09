@@ -16,14 +16,11 @@ public class PlayerGrab : MonoBehaviour
     private Animator anim;
     private int grabLayerIndex = 1; // Grab layer index
     private Transform originalParent; // Store original parent of the player
-   
-
+    
     void Start()
     {
         anim = GetComponent<Animator>();
-        originalParent = transform.parent; // Save the original parent
-        
-        
+        originalParent = transform.parent; // Save the original paren
     }
 
     void Update()

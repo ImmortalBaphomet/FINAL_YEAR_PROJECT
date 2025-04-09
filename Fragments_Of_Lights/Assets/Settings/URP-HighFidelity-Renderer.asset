@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01325bd99028f440d81c6b49db7bf5ca, type: 3}
   m_Name: PaintEffect
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   material: {fileID: 2100000, guid: 59d05d681d7844428a2786a7389fd954, type: 2}
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
