@@ -1770,6 +1770,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5961542069336008827, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961542069336008827, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961542069336008827, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19446,7 +19461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4db2b6f699347e4eb9d8cba759d4c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMode: 0
   target: {fileID: 481649450}
   smoothSpeed: 0.125
   offset: {x: 0, y: 1.5, z: 0}
@@ -19455,17 +19469,6 @@ MonoBehaviour:
   useBoundaries: 0
   minBounds: {x: 0, y: 0}
   maxBounds: {x: 0, y: 0}
-  sideViewAnchor: {fileID: 0}
-  isoViewAnchor: {fileID: 0}
-  transitionDuration: 2
-  transitionCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  camChange1: 0
-  camChange2: 0
 --- !u!222 &6882159565443306384
 CanvasRenderer:
   m_ObjectHideFlags: 0
