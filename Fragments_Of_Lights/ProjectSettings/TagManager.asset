@@ -18,6 +18,8 @@ TagManager:
   - Credits
   - Glass
   - Gate
+  - CheckPoint
+  - Grabbable
   layers:
   - Default
   - TransparentFX

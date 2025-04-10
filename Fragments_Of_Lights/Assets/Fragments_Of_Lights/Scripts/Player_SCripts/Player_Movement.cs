@@ -7,12 +7,9 @@ public class Player_Movement : MonoBehaviour
     public float moveSpeed = 5f;
     [SerializeField] private float defSpeed;
     private float currentVelocity; // For smooth rotation
-
     public float rotationSpeed = 10f;
-
     private float horizontalInput;
     private float verticalInput;
-
     private CharacterController characterController;
     private Animator playerAnim;
     private PlayerGrab pGrab;
@@ -42,7 +39,6 @@ public class Player_Movement : MonoBehaviour
             HandleRotation(); // Allow rotation while grabbing
             return; // Prevent movement while grabbing
         }
-
         HandleMove();
     }
 
