@@ -7480,12 +7480,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1365b947cfe794e4da9413b19117d805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  rotationSpeed: 50
   grabKey: 102
   rotateClockwiseKey: 101
   rotateCounterClockwiseKey: 113
   reqSpeed: 0
   isGrabbing: 0
+  canGrab: 0
 --- !u!1 &8812037528995856104
 GameObject:
   m_ObjectHideFlags: 0

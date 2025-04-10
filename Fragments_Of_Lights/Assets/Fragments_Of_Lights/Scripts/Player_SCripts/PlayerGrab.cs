@@ -12,18 +12,16 @@ public class PlayerGrab : MonoBehaviour
     public float reqSpeed;
 
     public bool isGrabbing = false;
+    public bool canGrab = false;
     private Transform grabbedObject;
     private Animator anim;
     private int grabLayerIndex = 1; // Grab layer index
     private Transform originalParent; // Store original parent of the player
-   
-
+    
     void Start()
     {
         anim = GetComponent<Animator>();
-        originalParent = transform.parent; // Save the original parent
-        
-        
+        originalParent = transform.parent; // Save the original paren
     }
 
     void Update()
@@ -49,7 +47,8 @@ public class PlayerGrab : MonoBehaviour
     void TryGrabObject()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+        Vector3 rayOrigin = transform.position + Vector3.up * 1f;
+        if (Physics.Raycast(rayOrigin, transform.forward, out hit, 2f))
         {
             if (hit.collider.CompareTag("Grabbable"))
             {
@@ -95,6 +94,14 @@ public class PlayerGrab : MonoBehaviour
         }
 
         grabbedObject.Rotate(Vector3.up * rotation);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Grabbable")
+        {
+            Debug.Log("Can Grab Object");
+            
+        }
     }
 }
 
