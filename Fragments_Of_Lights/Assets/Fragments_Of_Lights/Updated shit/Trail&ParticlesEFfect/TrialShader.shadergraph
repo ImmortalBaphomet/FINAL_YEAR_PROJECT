@@ -1235,12 +1235,6 @@
 }
 
 {
-    "m_SGVersion": 2,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
-    "m_ObjectId": "2a9d1e27d7874f7790cd0b0d6efda21d"
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "2cd31805f87d4dafa300b1c91a578099",
@@ -1289,7 +1283,7 @@
     "m_ObjectId": "2f2d64802dc14c24813fd8d1399716be",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "2a9d1e27d7874f7790cd0b0d6efda21d"
+        "m_Id": "b0f424b553be4f7f90fca41532dec328"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 1,
@@ -2949,7 +2943,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -3124,6 +3118,12 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 2,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
+    "m_ObjectId": "b0f424b553be4f7f90fca41532dec328"
 }
 
 {
