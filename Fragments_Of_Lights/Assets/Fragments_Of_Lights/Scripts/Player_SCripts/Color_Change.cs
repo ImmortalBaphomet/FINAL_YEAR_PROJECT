@@ -25,6 +25,12 @@ public class Color_Change : MonoBehaviour
 
     private Prism_Collection prismScript; // Reference to the Prism_Collection script
 
+    private PlayerGrab playerGrab;
+
+    void Awake()
+    {
+        playerGrab = GetComponent<PlayerGrab>();
+    }
     void Start()
     {
         // Convert Hex color to Unity Color
@@ -52,11 +58,11 @@ public class Color_Change : MonoBehaviour
             if (canSwitchColor)
             {
                 
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown(KeyCode.Q) && !playerGrab.isGrabbing)
                 {
                     UsePrismAndChangeColor(redColor, outlineRedColor); 
                 }
-                else if (Input.GetKeyDown(KeyCode.E))
+                else if (Input.GetKeyDown(KeyCode.E) && !playerGrab.isGrabbing)
                 {
                     UsePrismAndChangeColor(violetColor, outlineVioletColor); 
                 }

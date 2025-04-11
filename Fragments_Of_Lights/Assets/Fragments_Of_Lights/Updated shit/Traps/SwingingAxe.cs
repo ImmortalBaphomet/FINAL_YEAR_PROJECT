@@ -29,6 +29,7 @@ public class SwingingAxe : MonoBehaviour
 
         // Apply rotation to swing around the Z-axis while keeping forward as +X
         transform.rotation = Quaternion.Euler(0, 90, angle);
+        AudioManager.instance.PlayClip(AudioManager.instance.axeSwingAudio, false, 1f);
     }
 }
 

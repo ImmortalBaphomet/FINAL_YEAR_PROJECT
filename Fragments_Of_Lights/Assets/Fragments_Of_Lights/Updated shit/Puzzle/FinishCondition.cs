@@ -8,14 +8,18 @@ public class FinishCondition : MonoBehaviour
     [SerializeField] private MeshRenderer endMesh;
     [SerializeField] private Color endColor;
     [SerializeField] private Color defColor;
-    // Start is called before the first frame update
+
+    //[Header("Platform Spawning")]
+    //[SerializeField] private List<GameObject> platformPrefabs;
+    //[SerializeField] private List<Transform> spawnPoints;
+    //private bool hasSpawnedPlatforms = false;
+
     void Start()
     {
         lazerBeam = FindAnyObjectByType<LazerBeam>();
         endMesh = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         LazerFinish();
@@ -23,13 +27,36 @@ public class FinishCondition : MonoBehaviour
 
     void LazerFinish()
     {
-        if(lazerBeam.hitFinish)
+        if (lazerBeam.hitFinish)
         {
             endMesh.material.color = endColor;
+
+            //if (!hasSpawnedPlatforms)
+            //{
+            //    SpawnPlatforms();
+            //    hasSpawnedPlatforms = true;
+            //}
         }
         else
         {
             endMesh.material.color = defColor;
         }
     }
+
+    //void SpawnPlatforms()
+    //{
+    //    if (platformPrefabs.Count == 0 || spawnPoints.Count == 0)
+    //    {
+    //        Debug.LogWarning("Missing platform prefabs or spawn points.");
+    //        return;
+    //    }
+
+    //    int spawnCount = Mathf.Min(spawnPoints.Count, 5); // Max 5 platforms
+
+    //    for (int i = 0; i < spawnCount; i++)
+    //    {
+    //        int randomIndex = Random.Range(0, platformPrefabs.Count);
+    //        Instantiate(platformPrefabs[randomIndex], spawnPoints[i].position, spawnPoints[i].rotation);
+    //    }
+    //}
 }

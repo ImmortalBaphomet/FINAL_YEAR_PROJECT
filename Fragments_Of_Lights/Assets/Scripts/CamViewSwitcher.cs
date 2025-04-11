@@ -8,7 +8,10 @@ public class CamViewSwitcher : MonoBehaviour
     public Camera isoCam;
 
     private bool usingSideCam = true;
-
+    private void Awake()
+    {
+        sideCam = FindAnyObjectByType<Camera>();
+    }
     public void ToggleCameras()
     {
         usingSideCam = !usingSideCam;

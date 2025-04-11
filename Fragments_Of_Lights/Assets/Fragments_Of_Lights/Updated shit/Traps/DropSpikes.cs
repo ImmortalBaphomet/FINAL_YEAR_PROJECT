@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class DropSpikes : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class DropSpikes : MonoBehaviour
             availableDropPoints.RemoveAt(randomIndex); // Remove from list to avoid repeats
 
             SpawnSpike(spawnPoint);
+            
             yield return new WaitForSeconds(Random.Range(minDropDelay, maxDropDelay)); // Random delay between spikes
         }
     }
@@ -79,7 +81,7 @@ public class DropSpikes : MonoBehaviour
             GameObject spike = spikePool.Dequeue();
             spike.transform.position = spawnPoint.position;
             spike.SetActive(true);
-
+            AudioManager.instance.PlayClip(AudioManager.instance.spikeAudio, false, 1f);
             StartCoroutine(MoveSpikeDown(spike, spawnPoint.position.y - fallDistance));
         }
     }
