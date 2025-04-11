@@ -7474,7 +7474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0441b9b6819ca44ac5019e08574e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: bb0d57eae776d6f4d89dffb0bbd5e9d0, type: 2}
+  material: {fileID: 2100000, guid: fcf28c815f109044784e9a724796eadb, type: 2}
   intensityPropertyName: _intensity
   defaultIntensity: 0.5
   maxIntensity: 10
