@@ -20,6 +20,7 @@ TagManager:
   - Gate
   - CheckPoint
   - Grabbable
+  - LazerStart
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(Animator), typeof(PlayerGrab))]
 public class Player_Movement : MonoBehaviour
@@ -9,6 +10,7 @@ public class Player_Movement : MonoBehaviour
     private float currentVelocity; // For smooth rotation
 
     public float rotationSpeed = 10f;
+    public Vector2 moveInput;
 
     private float horizontalInput;
     private float verticalInput;
@@ -31,6 +33,11 @@ public class Player_Movement : MonoBehaviour
         targetRotation = transform.rotation;
         defSpeed = moveSpeed;
     }
+     public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+    
 
     private void Update()
     {

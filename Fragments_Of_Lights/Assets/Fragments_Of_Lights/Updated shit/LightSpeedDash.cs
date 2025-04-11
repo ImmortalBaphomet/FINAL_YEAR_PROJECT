@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class LightSpeedDash : MonoBehaviour
@@ -8,7 +9,6 @@ public class LightSpeedDash : MonoBehaviour
     [SerializeField] private float dashDistance = 10f;
     [SerializeField] private float dashCooldown = 2f;
     [SerializeField] private float dashDuration = 0.2f;
-    [SerializeField] private KeyCode dashKey = KeyCode.LeftShift;
 
     [Header("Trail Effect")]
     [SerializeField] private TrailRenderer dashTrail;
@@ -22,6 +22,9 @@ public class LightSpeedDash : MonoBehaviour
     private CharacterController controller;
     private bool canDash = true;
     private Vector3 dashDirection;
+    private PlayerInput playerInput;
+    private InputAction dashAction;
+    private InputAction jumpAction;
 
     private void Awake()
     {
@@ -31,18 +34,38 @@ public class LightSpeedDash : MonoBehaviour
         if (dashTrail) dashTrail.enabled = false;
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (canDash && Input.GetKeyDown(dashKey))
-        {
-            dashDirection = Input.GetKey(KeyCode.Space)
-                ? (transform.forward + Vector3.up).normalized
-                : transform.forward.normalized;
+        playerInput = GetComponent<PlayerInput>();
 
-            StartCoroutine(DashRoutine());
+        if (playerInput != null)
+        {
+            dashAction = playerInput.actions["Dash"];
+            jumpAction = playerInput.actions["Jump"];
+
+            dashAction.performed += onDash;
+            dashAction.Enable();
+            jumpAction.Enable();
         }
     }
 
+    private void OnDisable()
+    {
+        if (dashAction != null) dashAction.performed -= onDash;
+    }
+
+    public void onDash(InputAction.CallbackContext context)
+    {
+        if (!canDash) return;
+
+        // Optional: Use jump key to modify dash direction
+        bool isJumping = jumpAction != null && jumpAction.IsPressed();
+        dashDirection = isJumping
+            ? (transform.forward + Vector3.up).normalized
+            : transform.forward.normalized;
+
+        StartCoroutine(DashRoutine());
+    }
 
     private IEnumerator DashRoutine()
     {
@@ -55,8 +78,14 @@ public class LightSpeedDash : MonoBehaviour
         while (elapsed < dashDuration)
         {
             float step = dashSpeed * Time.deltaTime;
-            controller.Move(dashDirection * step); // Let CharacterController handle collisions
 
+            // Optional: Check for obstacles during dash
+            if (Physics.SphereCast(transform.position, dashCollisionRadius, dashDirection, out RaycastHit hit, step, obstacleLayers))
+            {
+                break; // Stop dash on collision
+            }
+
+            controller.Move(dashDirection * step);
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -65,7 +94,6 @@ public class LightSpeedDash : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-
 
     private void ToggleVisuals(bool visible)
     {
@@ -80,78 +108,3 @@ public class LightSpeedDash : MonoBehaviour
         if (dashTrailHolder) dashTrailHolder.SetActive(!visible);
     }
 }
-
-/*
-using System.Collections;
-using UnityEngine;
-
-public class LightSpeedDash : MonoBehaviour
-{
-    
-
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-        dashTrailHolder?.SetActive(false);
-    }
-
-    void Update()
-    {
-        if (canDash && Input.GetKeyDown(dashKey))
-        {
-            StartCoroutine(PerformDash());
-        }
-    }
-
-    private Vector3 CalculateDashDirection()
-    {
-        return Input.GetKey(KeyCode.Space)
-            ? (transform.forward + Vector3.up).normalized
-            : transform.forward.normalized;
-    }
-
-    private IEnumerator PerformDash()
-    {
-        canDash = false;
-        dashDirection = CalculateDashDirection();
-        float dashSpeed = dashDistance / dashDuration;
-        float elapsedTime = 0f;
-
-        // Hide visuals and enable trail
-        playerRenderer.enabled = false;
-        if (dashTrail != null)
-        {
-            dashTrail.enabled = true;
-            dashTrailHolder?.SetActive(true);
-        }
-
-        while (elapsedTime < dashDuration)
-        {
-            float stepDistance = dashSpeed * Time.deltaTime;
-
-            // Obstacle check
-            if (Physics.SphereCast(transform.position, dashCollisionRadius, dashDirection, out RaycastHit hit, stepDistance, obstacleLayers))
-            {
-                break; // Hit obstacle – stop dash
-            }
-
-            controller.Move(dashDirection * stepDistance);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Restore visuals and disable trail
-        playerRenderer.enabled = true;
-        if (dashTrail != null)
-        {
-            dashTrail.enabled = false;
-            dashTrailHolder?.SetActive(false);
-            dashTrail.Clear();
-        }
-
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-    }
-}
-
-*/

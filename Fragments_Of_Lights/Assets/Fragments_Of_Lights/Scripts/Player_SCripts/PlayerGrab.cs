@@ -1,68 +1,175 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerGrab : MonoBehaviour
 {
-    public float rotationSpeed = 100f;
+    [Header("Input System Actions")]
+    private InputActionReference grabAction;
+    private InputActionReference rotateAction;
+
+    [Header("Keyboard Fallback (Optional)")]
     public KeyCode grabKey = KeyCode.F;
     public KeyCode rotateClockwiseKey = KeyCode.E;
     public KeyCode rotateCounterClockwiseKey = KeyCode.Q;
-    
-    public float reqSpeed;
+
+    [Header("Grab Settings")]
+    public float rotationSpeed = 100f;
+    public float grabRange = 2f;
+    public Transform interactionOrigin;
 
     public bool isGrabbing = false;
-    public bool canGrab = false;
     private Transform grabbedObject;
+    private Transform originalParent;
     private Animator anim;
-    private int grabLayerIndex = 1; // Grab layer index
-    private Transform originalParent; // Store original parent of the player
-    
+    private int grabLayerIndex = 1;
+
+    private float currentRotationInput = 0f;
+
+    void OnEnable()
+    {
+        if (grabAction != null)
+            grabAction.action.performed += OnGrab;
+
+        if (rotateAction != null)
+        {
+            rotateAction.action.performed += OnRotatePerformed;
+            rotateAction.action.canceled += OnRotateCanceled;
+            rotateAction.action.Enable();
+        }
+    }
+
+    void OnDisable()
+    {
+        if (grabAction != null)
+            grabAction.action.performed -= OnGrab;
+
+        if (rotateAction != null)
+        {
+            rotateAction.action.performed -= OnRotatePerformed;
+            rotateAction.action.canceled -= OnRotateCanceled;
+            rotateAction.action.Disable();
+        }
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
-        originalParent = transform.parent; // Save the original paren
+        originalParent = transform.parent;
     }
 
     void Update()
     {
+        // Fallback for keyboard grabbing
         if (Input.GetKeyDown(grabKey))
         {
-            if (isGrabbing)
-            {
-                DropObject();
-            }
-            else
-            {
-                TryGrabObject();
-            }
+            HandleGrab();
         }
 
+        // Keyboard fallback rotation
         if (isGrabbing && grabbedObject != null)
         {
-            RotateObject();
+            float rotation = 0;
+            if (Input.GetKey(rotateClockwiseKey))
+                rotation = rotationSpeed * Time.deltaTime;
+            else if (Input.GetKey(rotateCounterClockwiseKey))
+                rotation = -rotationSpeed * Time.deltaTime;
+
+            if (rotation != 0)
+                grabbedObject.Rotate(Vector3.up * rotation);
+        }
+
+        // Gamepad rotation input
+        if (isGrabbing && grabbedObject != null && Mathf.Abs(currentRotationInput) > 0.01f)
+        {
+            float rotation = currentRotationInput * rotationSpeed * Time.deltaTime;
+            grabbedObject.Rotate(Vector3.up * rotation);
         }
     }
+
+    public void OnGrab(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            HandleGrab();
+        }
+    }
+
+   public void OnRotatePerformed(InputAction.CallbackContext context)
+    {
+        currentRotationInput = context.ReadValue<float>();
+    }
+
+
+    public void OnRotateCanceled(InputAction.CallbackContext context)
+    {
+        currentRotationInput = 0f;
+    }
+
+    void HandleGrab()
+    {
+        RaycastHit hit;
+        Vector3 origin = interactionOrigin ? interactionOrigin.position : transform.position + Vector3.up * 1f;
+
+        if (Physics.Raycast(origin, transform.forward, out hit, grabRange))
+        {
+            // Check for Door
+            Door door = hit.collider.GetComponent<Door>();
+            if (door != null)
+            {
+                door.Interact();  // Calls the new method in Door.cs
+                return;
+            }
+
+            // Check for Grabbable
+            if (hit.collider.CompareTag("Grabbable"))
+            {
+                grabbedObject = hit.collider.transform;
+                isGrabbing = true;
+
+                transform.SetParent(grabbedObject);
+
+                anim.SetLayerWeight(grabLayerIndex, 1);
+                anim.SetBool("isGrab", true);
+            }
+        }
+        else if (isGrabbing)
+        {
+            DropObject();
+        }
+    }
+
+
+    // void HandleGrab()
+    // {
+    //     if (isGrabbing)
+    //     {
+    //         DropObject();
+    //     }
+    //     else
+    //     {
+    //         TryGrabObject();
+    //     }
+    // }
+
+
 
     void TryGrabObject()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = transform.position + Vector3.up * 1f;
-        if (Physics.Raycast(rayOrigin, transform.forward, out hit, 2f))
+        Vector3 origin = interactionOrigin ? interactionOrigin.position : transform.position + Vector3.up * 1f;
+
+        if (Physics.Raycast(origin, transform.forward, out hit, grabRange))
         {
             if (hit.collider.CompareTag("Grabbable"))
             {
                 grabbedObject = hit.collider.transform;
                 isGrabbing = true;
 
-                // Set player as child of the grabbed object
                 transform.SetParent(grabbedObject);
-                // set movement speed = 0
-                
-                // *** Force player's scale to remain unchanged ***
-                //transform.localScale = originalScale;
 
-                anim.SetLayerWeight(grabLayerIndex, 1); // Activate upper body grab animation
+                anim.SetLayerWeight(grabLayerIndex, 1);
                 anim.SetBool("isGrab", true);
             }
         }
@@ -73,36 +180,17 @@ public class PlayerGrab : MonoBehaviour
         isGrabbing = false;
         grabbedObject = null;
 
-        // Reset player's parent and ensure scale stays the same
         transform.SetParent(originalParent);
-        //transform.localScale = originalScale; // Restore scale after unparenting
 
-        anim.SetLayerWeight(grabLayerIndex, 0); // Disable grab animation
+        anim.SetLayerWeight(grabLayerIndex, 0);
         anim.SetBool("isGrab", false);
     }
 
-    void RotateObject()
-    {
-        float rotation = 0;
-        if (Input.GetKey(rotateClockwiseKey))
-        {
-            rotation = rotationSpeed * Time.deltaTime;
-        }
-        else if (Input.GetKey(rotateCounterClockwiseKey))
-        {
-            rotation = -rotationSpeed * Time.deltaTime;
-        }
-
-        grabbedObject.Rotate(Vector3.up * rotation);
-    }
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Grabbable")
+        if (other.CompareTag("Grabbable"))
         {
             Debug.Log("Can Grab Object");
-            
         }
     }
 }
-
-
