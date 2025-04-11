@@ -59,6 +59,7 @@ public class WallSpear : MonoBehaviour
         while (Vector3.Distance(spear.transform.position, thrustPosition) > 0.01f)
         {
             spear.transform.position = Vector3.MoveTowards(spear.transform.position, thrustPosition, thrustSpeed * Time.deltaTime);
+            AudioManager.instance.PlayClip(AudioManager.instance.spearAudio, false, 1f);
             yield return null;
         }
 

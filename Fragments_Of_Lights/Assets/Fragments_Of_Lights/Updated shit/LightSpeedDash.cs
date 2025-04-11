@@ -51,6 +51,7 @@ public class LightSpeedDash : MonoBehaviour
         float elapsed = 0f;
 
         ToggleVisuals(false);
+        AudioManager.instance.PlayClip(AudioManager.instance.dashAudio, false, 1f);
 
         while (elapsed < dashDuration)
         {

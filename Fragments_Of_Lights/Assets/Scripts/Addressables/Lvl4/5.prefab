@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5958680822875976349}
   - component: {fileID: 3927271059271068036}
   - component: {fileID: 5839770497127643253}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 3807648308222140750}
   - component: {fileID: 4285489190374409239}
   - component: {fileID: 2165339765737008981}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 2399533674232025337}
   - component: {fileID: 4457748197471071945}
   - component: {fileID: 6319863639550775208}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc5addf98ffdf1c49ba185d894b7b8a0, type: 2}
+  - {fileID: 2100000, guid: 1c2e16b5a4562b34685d4ac223f560ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 2203181715343383523}
   - component: {fileID: 7466146229190022290}
   - component: {fileID: 2583225548098081000}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 110247098537089195}
   - component: {fileID: 4142688867553539206}
   - component: {fileID: 4732166732570056524}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 1678395030917577566}
   - component: {fileID: 1385575104905302635}
   - component: {fileID: 4634504163403089444}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1745,7 +1745,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8af33b8b4e85a4d409dd8495156120ed, type: 2}
+  - {fileID: 2100000, guid: fad9e489f0444ef47a73b980d7262c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1905,7 +1905,7 @@ GameObject:
   - component: {fileID: 466468643589030407}
   - component: {fileID: 8119115894724400007}
   - component: {fileID: 7216458782574272062}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2165,7 +2165,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8af33b8b4e85a4d409dd8495156120ed, type: 2}
+  - {fileID: 2100000, guid: fad9e489f0444ef47a73b980d7262c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2374,7 +2374,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab4ee98570360a4409dd3aa827e3688f, type: 2}
+  - {fileID: 2100000, guid: fad9e489f0444ef47a73b980d7262c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2513,7 +2513,7 @@ GameObject:
   - component: {fileID: 2813506256193606084}
   - component: {fileID: 6207225133252336673}
   - component: {fileID: 8050651011924793394}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2845,7 +2845,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8af33b8b4e85a4d409dd8495156120ed, type: 2}
+  - {fileID: 2100000, guid: fad9e489f0444ef47a73b980d7262c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3110,7 +3110,7 @@ GameObject:
   - component: {fileID: 61673568642695773}
   - component: {fileID: 6865783594336192175}
   - component: {fileID: 3296730171747516688}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3266,7 +3266,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8af33b8b4e85a4d409dd8495156120ed, type: 2}
+  - {fileID: 2100000, guid: fad9e489f0444ef47a73b980d7262c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3426,7 +3426,7 @@ GameObject:
   - component: {fileID: 2595522214208765744}
   - component: {fileID: 5676591456049766450}
   - component: {fileID: 8464720177763593799}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3847,7 +3847,7 @@ GameObject:
   - component: {fileID: 8845360802848583743}
   - component: {fileID: 9006973715260809555}
   - component: {fileID: 978241227928687987}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: StarisRipOff (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4001,7 +4001,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab4ee98570360a4409dd3aa827e3688f, type: 2}
+  - {fileID: 2100000, guid: fad9e489f0444ef47a73b980d7262c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

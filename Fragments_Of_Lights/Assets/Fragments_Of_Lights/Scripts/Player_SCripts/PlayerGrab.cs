@@ -87,10 +87,12 @@ public class PlayerGrab : MonoBehaviour
         if (Input.GetKey(rotateClockwiseKey))
         {
             rotation = rotationSpeed * Time.deltaTime;
+            AudioManager.instance.PlayClip(AudioManager.instance.mirrorRotateAudio, false, 1f);
         }
         else if (Input.GetKey(rotateCounterClockwiseKey))
         {
             rotation = -rotationSpeed * Time.deltaTime;
+            AudioManager.instance.PlayClip(AudioManager.instance.mirrorRotateAudio, false, 1f);
         }
 
         grabbedObject.Rotate(Vector3.up * rotation);

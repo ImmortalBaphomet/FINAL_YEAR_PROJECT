@@ -68,6 +68,7 @@ public class Player_Movement : MonoBehaviour
         playerAnim.SetFloat("speed", moveDirection.magnitude);
 
         characterController.Move(moveDirection * Time.deltaTime);
+
     }
 
     private void HandleRotation()

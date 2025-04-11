@@ -41,6 +41,7 @@ public class LazerBeam : MonoBehaviour
         if (!isLaserActive)
         {
             StartCoroutine(LaserRoutine());
+            AudioManager.instance.PlayClip(AudioManager.instance.lazerOnAudio, false, 1f);
         }
     }
 
@@ -94,7 +95,7 @@ public class LazerBeam : MonoBehaviour
             new GradientAlphaKey(0f, 0f),
             new GradientAlphaKey(0f, 1f)
         };
-
+        AudioManager.instance.PlayClip(AudioManager.instance.lazerOffAudio, false, 1f);
         Gradient finalGradient = new Gradient();
         finalGradient.SetKeys(colorKeys, zeroAlphaKeys);
         lineRenderer.colorGradient = finalGradient;
