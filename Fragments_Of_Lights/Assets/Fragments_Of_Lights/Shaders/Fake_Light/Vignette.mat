@@ -75,9 +75,13 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - _intensity: 2.128823
 =======
     - _intensity: 9.90955
+>>>>>>> Stashed changes
+=======
+    - _intensity: 0.50912076
 >>>>>>> Stashed changes
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
