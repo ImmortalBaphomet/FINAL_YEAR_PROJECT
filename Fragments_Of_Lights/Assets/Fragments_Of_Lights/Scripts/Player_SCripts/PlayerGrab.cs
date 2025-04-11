@@ -118,7 +118,7 @@ public class PlayerGrab : MonoBehaviour
             Door door = hit.collider.GetComponent<Door>();
             if (door != null)
             {
-                door.Interact();  // Calls the new method in Door.cs
+                //door.Interact();  // Calls the new method in Door.cs
                 return;
             }
 

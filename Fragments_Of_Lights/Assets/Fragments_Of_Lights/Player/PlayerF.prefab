@@ -7324,6 +7324,7 @@ GameObject:
   - component: {fileID: 9140353419056905554}
   - component: {fileID: 1590786228637225383}
   - component: {fileID: 3537268893331627852}
+  - component: {fileID: 2614580402241929037}
   m_Layer: 0
   m_Name: PlayerF
   m_TagString: Player
@@ -7415,6 +7416,7 @@ MonoBehaviour:
   moveSpeed: 4
   defSpeed: 4
   rotationSpeed: 10
+  moveInput: {x: 0, y: 0}
 --- !u!114 &1529793548364214862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7439,6 +7441,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  headCheck: {fileID: 0}
+  headCheckDistance: 0.3
   isviolet: 0
   isGrounded: 0
   isJumping: 0
@@ -7532,7 +7536,6 @@ MonoBehaviour:
   dashDistance: 7
   dashCooldown: 1
   dashDuration: 0.5
-  dashKey: 304
   dashTrail: {fileID: 1121103228874485842}
   dashTrailHolder: {fileID: 4513354158887575486}
   playerRenderer: {fileID: 2219718392647418605}
@@ -7552,13 +7555,172 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1365b947cfe794e4da9413b19117d805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
   grabKey: 102
   rotateClockwiseKey: 101
   rotateCounterClockwiseKey: 113
-  reqSpeed: 0
+  rotationSpeed: 50
+  grabRange: 2
+  interactionOrigin: {fileID: 0}
   isGrabbing: 0
-  canGrab: 0
+--- !u!114 &2614580402241929037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792214427978391509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 569042b6610ac42e29aba32811c0dd91,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869332378973365071}
+        m_TargetAssemblyTypeName: Player_Movement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d9fe05c-282c-40ad-b70a-1011acc2d084
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1529793548364214862}
+        m_TargetAssemblyTypeName: Player_Jump, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7abe912c-0585-46ed-896b-a531e10069d4
+    m_ActionName: Player/Jump[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1590786228637225383}
+        m_TargetAssemblyTypeName: LightSpeedDash, Assembly-CSharp
+        m_MethodName: onDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8db66bf6-5571-445e-98e2-2f34aaa7f829
+    m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8792214427978391509}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0cc51d66-54fb-4e37-b526-c7b6abfd3955
+    m_ActionName: Player/Color CHangeRed[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8792214427978391509}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 71f03cde-8496-425e-ae7a-06fbf6c37156
+    m_ActionName: Player/ColorChangeViolet[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3537268893331627852}
+        m_TargetAssemblyTypeName: PlayerGrab, Assembly-CSharp
+        m_MethodName: OnGrab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7e0b6012-5f35-4eaf-a897-81c59eaf2830
+    m_ActionName: Player/Interaction[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123521517114192867}
+        m_TargetAssemblyTypeName: Fake_Light_Control, Assembly-CSharp
+        m_MethodName: onActivate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 63938ccf-ab0a-4f41-85a2-c10355796f06
+    m_ActionName: Player/LIght_Emission[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3537268893331627852}
+        m_TargetAssemblyTypeName: PlayerGrab, Assembly-CSharp
+        m_MethodName: OnRotatePerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10323015-21d0-4611-9c4a-c453c79e8cde
+    m_ActionName: Player/RotateObj[/Keyboard/u,/Keyboard/i]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &8812037528995856104
 GameObject:
   m_ObjectHideFlags: 0
