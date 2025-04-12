@@ -8,8 +8,7 @@ public class Door : MonoBehaviour
     public Transform pivot; // Assign the pivot point as an empty GameObject
     public float openAngle = 90f;
     public float openSpeed = 2f;
-    public KeyCode interactKey = KeyCode.E;
-    
+
     private bool isOpen = false;
     private bool playerNear = false;
     private Quaternion closedRotation;
@@ -23,12 +22,15 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if (playerNear && Input.GetKeyDown(interactKey))
+        pivot.rotation = Quaternion.Lerp(pivot.rotation, isOpen ? openRotation : closedRotation, Time.deltaTime * openSpeed);
+    }
+
+    public void Interact()
+    {
+        if (playerNear)
         {
             isOpen = !isOpen;
         }
-        
-        pivot.rotation = Quaternion.Lerp(pivot.rotation, isOpen ? openRotation : closedRotation, Time.deltaTime * openSpeed);
     }
 
     void OnTriggerEnter(Collider other)
@@ -47,4 +49,3 @@ public class Door : MonoBehaviour
         }
     }
 }
-

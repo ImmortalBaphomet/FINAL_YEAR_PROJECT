@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(Animator), typeof(PlayerGrab))]
 public class Player_Movement : MonoBehaviour
@@ -7,9 +8,13 @@ public class Player_Movement : MonoBehaviour
     public float moveSpeed = 5f;
     [SerializeField] private float defSpeed;
     private float currentVelocity; // For smooth rotation
+
     public float rotationSpeed = 10f;
+    public Vector2 moveInput;
+
     private float horizontalInput;
     private float verticalInput;
+
     private CharacterController characterController;
     private Animator playerAnim;
     private PlayerGrab pGrab;
@@ -28,6 +33,11 @@ public class Player_Movement : MonoBehaviour
         targetRotation = transform.rotation;
         defSpeed = moveSpeed;
     }
+     public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+    
 
     private void Update()
     {
@@ -39,6 +49,7 @@ public class Player_Movement : MonoBehaviour
             HandleRotation(); // Allow rotation while grabbing
             return; // Prevent movement while grabbing
         }
+
         HandleMove();
     }
 
@@ -68,7 +79,6 @@ public class Player_Movement : MonoBehaviour
         playerAnim.SetFloat("speed", moveDirection.magnitude);
 
         characterController.Move(moveDirection * Time.deltaTime);
-
     }
 
     private void HandleRotation()

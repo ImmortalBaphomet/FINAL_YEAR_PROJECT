@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player_Jump : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Player_Jump : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.2f;
     public LayerMask groundMask;
+
+    [Header("Ceiling Check")] 
+    public Transform headCheck; 
+    public float headCheckDistance = 0.3f;
 
     private CharacterController characterController;
     private Color_Change color_Change;
@@ -35,79 +40,124 @@ public class Player_Jump : MonoBehaviour
         
         gravityMod = defaultGravity; // Set gravity to default at start
     }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded) //&& currentJumps < maxJumps)
+        {
+            Debug.Log($"Jump button pressed from: {context.control.device.displayName}");
+            HandleJump();
+            
+        }
+    }
 
     private void Update()
     {
         GroundCheck();
+        CheckCeiling(); 
         ApplyGravity();
-        HandleJump();
+        
         
         characterController.Move(velocity * Time.deltaTime);
-        
     }
-    
 
     private void GroundCheck()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded)
         {
-            velocity.y = -2f;
-            isJumping = false;
-            isFalling = false;
-            SetAnimationStates(true, false, false); // Grounded, not jumping, not falling
+            if (velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+
+            if (!isJumping && !isFalling)
+            {
+                SetAnimationStates(true, false, false);
+            }
+            else if (isFalling) // just landed
+            {
+                isJumping = false;
+                isFalling = false;
+                SetAnimationStates(true, false, false);
+            }
+        }
+        else
+        {
+            if (velocity.y < 0)
+            {
+                isFalling = true;
+                isJumping = false;
+                SetAnimationStates(false, false, true);
+            }
         }
     }
-    
+
+
+
+    private void CheckCeiling()
+    {
+        if (isJumping)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(headCheck.position, Vector3.up, out hit, headCheckDistance))
+            {
+                Debug.Log("Hit ceiling: " + hit.collider.name);
+                velocity.y = 0f; // Stop upward movement
+                isJumping = false;
+                isFalling = true;
+                SetAnimationStates(false, false, true); // Switch to falling
+            }
+        }
+    }
 
     private void HandleJump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (isGrounded)
         {
             isJumping = true;
             isFalling = false;
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravityMod);
             SetAnimationStates(false, true, false); // Not grounded, jumping, not falling
-            AudioManager.instance.PlayClip(AudioManager.instance.jumpAudio, false, 1f);
         }
 
-        if (!isGrounded && velocity.y < 0 && !isFalling) 
-        {
-            isFalling = true;
-            isJumping = false;
-            SetAnimationStates(false, false, true); // Not grounded, not jumping, falling
-        }
+        // if (!isGrounded && velocity.y < 0 && !isFalling)
+        // {
+        //     isFalling = true;
+        //     isJumping = false;
+        //     SetAnimationStates(false, false, true); // Not grounded, not jumping, falling
+        // }
     }
+
 
     private void ApplyGravity()
     {
-        velocity.y += gravityMod * fallModifier *  Time.deltaTime;
+        velocity.y += gravityMod * fallModifier * Time.deltaTime;
     }
 
-    private void SetAnimationStates(bool grounded, bool jumping, bool falling)
+   private void SetAnimationStates(bool grounded, bool jumping, bool falling)
     {
+        Debug.Log($"Animation State -> Grounded: {grounded}, Jumping: {jumping}, Falling: {falling}");
         playerAnim.SetBool("Is_Grounded", grounded);
         playerAnim.SetBool("Is_Jumping", jumping);
         playerAnim.SetBool("Is_Falling", falling);
     }
+
+
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered gravity zone: " + other.gameObject.tag);
-
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
         {
             lowGravityZone = true;
             gravityMod = lowGravity;
-            Debug.Log("Gravity set to LOW: " + gravityMod + "Player color is " + color_Change.isViolet);
         }
         else if (other.CompareTag(RED_AREA) && color_Change.isRed)
         {
             highGravityZone = true;
             gravityMod = highGravity;
-            Debug.Log("Gravity set to HIGH: " + gravityMod);
         }
     }
+
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
@@ -119,6 +169,7 @@ public class Player_Jump : MonoBehaviour
             gravityMod = highGravity;
         }
     }
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
@@ -133,7 +184,6 @@ public class Player_Jump : MonoBehaviour
         if (!lowGravityZone && !highGravityZone)
         {
             gravityMod = defaultGravity;
-            Debug.Log("Gravity reset to NORMAL: " + gravityMod);
         }
     }
 
@@ -144,8 +194,11 @@ public class Player_Jump : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
         }
+
+        if (headCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(headCheck.position, Vector3.up * headCheckDistance); // Visualize ceiling check
+        }
     }
-
-    
 }
-
