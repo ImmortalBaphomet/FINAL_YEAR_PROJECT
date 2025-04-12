@@ -8,8 +8,8 @@ public class Player_Jump : MonoBehaviour
     [Header("Jump Settings")]
     public float jumpForce = 8f;
     public float defaultGravity = -20f, lowGravity = -5f, highGravity = -30f;
+    [SerializeField] private float fallModifier = 2f;
     private float gravityMod;
-    [SerializeField] private float fallModifier;
 
     public bool lowGravityZone = false, highGravityZone = false;
 
@@ -18,16 +18,16 @@ public class Player_Jump : MonoBehaviour
     public float groundDistance = 0.2f;
     public LayerMask groundMask;
 
-    [Header("Ceiling Check")] 
-    public Transform headCheck; 
+    [Header("Ceiling Check")]
+    public Transform headCheck;
     public float headCheckDistance = 0.3f;
 
     private CharacterController characterController;
     private Color_Change color_Change;
-    public bool isviolet;
     private Animator playerAnim;
+
     private Vector3 velocity;
-    [SerializeField] private bool isGrounded, isJumping, isFalling;
+    private bool isGrounded, isJumping, isFalling;
 
     private const string VIOLET_AREA = "VioletArea";
     private const string RED_AREA = "RedArea";
@@ -37,26 +37,24 @@ public class Player_Jump : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         color_Change = GetComponent<Color_Change>();
-        
-        gravityMod = defaultGravity; // Set gravity to default at start
+        gravityMod = defaultGravity;
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded) //&& currentJumps < maxJumps)
+        if (context.performed && isGrounded)
         {
             Debug.Log($"Jump button pressed from: {context.control.device.displayName}");
             HandleJump();
-            
         }
     }
 
     private void Update()
     {
         GroundCheck();
-        CheckCeiling(); 
+        CheckCeiling();
         ApplyGravity();
-        
-        
+
         characterController.Move(velocity * Time.deltaTime);
     }
 
@@ -68,15 +66,16 @@ public class Player_Jump : MonoBehaviour
         {
             if (velocity.y < 0)
             {
-                velocity.y = -2f;
+                velocity.y = -2f; // prevents floating
             }
 
             if (!isJumping && !isFalling)
             {
                 SetAnimationStates(true, false, false);
             }
-            else if (isFalling) // just landed
+            else if (isFalling)
             {
+                // Landed
                 isJumping = false;
                 isFalling = false;
                 SetAnimationStates(true, false, false);
@@ -86,14 +85,15 @@ public class Player_Jump : MonoBehaviour
         {
             if (velocity.y < 0)
             {
-                isFalling = true;
-                isJumping = false;
-                SetAnimationStates(false, false, true);
+                if (!isFalling)
+                {
+                    isFalling = true;
+                    isJumping = false;
+                    SetAnimationStates(false, false, true);
+                }
             }
         }
     }
-
-
 
     private void CheckCeiling()
     {
@@ -103,10 +103,10 @@ public class Player_Jump : MonoBehaviour
             if (Physics.Raycast(headCheck.position, Vector3.up, out hit, headCheckDistance))
             {
                 Debug.Log("Hit ceiling: " + hit.collider.name);
-                velocity.y = 0f; // Stop upward movement
+                velocity.y = 0f;
                 isJumping = false;
                 isFalling = true;
-                SetAnimationStates(false, false, true); // Switch to falling
+                SetAnimationStates(false, false, true);
             }
         }
     }
@@ -118,24 +118,16 @@ public class Player_Jump : MonoBehaviour
             isJumping = true;
             isFalling = false;
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravityMod);
-            SetAnimationStates(false, true, false); // Not grounded, jumping, not falling
+            SetAnimationStates(false, true, false);
         }
-
-        // if (!isGrounded && velocity.y < 0 && !isFalling)
-        // {
-        //     isFalling = true;
-        //     isJumping = false;
-        //     SetAnimationStates(false, false, true); // Not grounded, not jumping, falling
-        // }
     }
-
 
     private void ApplyGravity()
     {
         velocity.y += gravityMod * fallModifier * Time.deltaTime;
     }
 
-   private void SetAnimationStates(bool grounded, bool jumping, bool falling)
+    private void SetAnimationStates(bool grounded, bool jumping, bool falling)
     {
         Debug.Log($"Animation State -> Grounded: {grounded}, Jumping: {jumping}, Falling: {falling}");
         playerAnim.SetBool("Is_Grounded", grounded);
@@ -143,8 +135,7 @@ public class Player_Jump : MonoBehaviour
         playerAnim.SetBool("Is_Falling", falling);
     }
 
-
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
         {
@@ -158,7 +149,7 @@ public class Player_Jump : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
         {
@@ -170,13 +161,13 @@ public class Player_Jump : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(VIOLET_AREA) && color_Change.isViolet)
+        if (other.CompareTag(VIOLET_AREA))
         {
             lowGravityZone = false;
         }
-        else if (other.CompareTag(RED_AREA) && color_Change.isRed)
+        else if (other.CompareTag(RED_AREA))
         {
             highGravityZone = false;
         }
@@ -198,7 +189,7 @@ public class Player_Jump : MonoBehaviour
         if (headCheck != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(headCheck.position, Vector3.up * headCheckDistance); // Visualize ceiling check
+            Gizmos.DrawRay(headCheck.position, Vector3.up * headCheckDistance);
         }
     }
 }
