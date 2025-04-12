@@ -49,6 +49,25 @@ public class EntryToSquidGames : MonoBehaviour
                 other.transform.rotation = sendtoTarget.rotation;
             }
 
+            // Disable the current main camera
+            Camera currentMainCamera = Camera.main;
+            if (currentMainCamera != null)
+            {
+                currentMainCamera.gameObject.SetActive(false);
+            }
+
+            // Find and enable the camera inside the puzzle prefab
+            Camera puzzleCam = spawnedPuzzle.GetComponentInChildren<Camera>(true); // true to include inactive objects
+            if (puzzleCam != null)
+            {
+                puzzleCam.gameObject.SetActive(true);
+                Debug.Log("Switched to puzzle camera.");
+            }
+            else
+            {
+                Debug.LogWarning("No camera found inside the puzzle prefab.");
+            }
+
             Debug.Log("Teleported " + other.name + " to " + sendtoTarget.position);
         }
     }
