@@ -664,6 +664,26 @@ PrefabInstance:
       propertyPath: failarea
       value: 
       objectReference: {fileID: 4157061489887896053}
+    - target: {fileID: 1529793548364214862, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: headCheck
+      value: 
+      objectReference: {fileID: 1550450658}
+    - target: {fileID: 1529793548364214862, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: fallModifier
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529793548364214862, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: defaultGravity
+      value: -9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614580402241929037, guid: 79b3983322432456a8421b9af3ce4ed3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6490340303767257805, guid: 79b3983322432456a8421b9af3ce4ed3,
         type: 3}
       propertyPath: m_LocalPosition.x
