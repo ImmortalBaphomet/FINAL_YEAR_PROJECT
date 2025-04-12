@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Color CHangeRed",
+                    "name": "ColorChangeRed",
                     "type": "Button",
                     "id": "0cc51d66-54fb-4e37-b526-c7b6abfd3955",
                     "expectedControlType": "",
@@ -196,7 +196,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Color CHangeRed",
+                    "action": "ColorChangeRed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -207,7 +207,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Color CHangeRed",
+                    "action": "ColorChangeRed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
