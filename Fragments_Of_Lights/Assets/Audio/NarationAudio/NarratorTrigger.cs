@@ -42,9 +42,11 @@ public class NarratorTrigger : MonoBehaviour
 
     public void DisplayNextLine()
     {
+        Debug.Log("DisplayNextLine button clicked"); // Add this line
+
         if (!isActive) return;
 
-        if (currentIndex < dialogues.Count) // Updated to use List.Count
+        if (currentIndex < dialogues.Count)
         {
             dialogueText.text = dialogues[currentIndex];
             currentIndex++;
@@ -54,6 +56,7 @@ public class NarratorTrigger : MonoBehaviour
             EndNarratorDialogue();
         }
     }
+
 
     public void EndNarratorDialogue()
     {

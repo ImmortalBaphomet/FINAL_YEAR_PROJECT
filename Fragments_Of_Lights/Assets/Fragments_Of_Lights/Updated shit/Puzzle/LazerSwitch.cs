@@ -1,84 +1,83 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class LazerSwitch : MonoBehaviour
 {
-    [Header("Laser Settings")]
-    public string laserObjectName = "LaserBeam(Clone)"; // name of the laser prefab when instantiated
-    public string laserTag = "Laser"; // optional tag if you want to use tags instead
-    private LazerBeam laserToActivate;
-
-    [Header("Interaction Settings")]
+    public string laserObjectName = "LaserBeam(Clone)";
     public float interactionRange = 3f;
     public Transform interactionOrigin;
 
-    [Header("Input")]
-    private InputActionReference activateAction;
+    private LazerBeam laserToActivate;
 
-    private void OnEnable()
+    private void Start()
     {
-        if (activateAction != null)
-        {
-            activateAction.action.performed += OnActivateLaser;
-            activateAction.action.Enable();
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (activateAction != null)
-        {
-            activateAction.action.performed -= OnActivateLaser;
-            activateAction.action.Disable();
-        }
+        AssignPlayer();
+        FindLaser();
     }
 
     private void Update()
     {
-        // Always check if the laser exists
+        if (interactionOrigin == null)
+        {
+            AssignPlayer();
+        }
+
         if (laserToActivate == null)
         {
             FindLaser();
         }
-    }
 
-    private void FindLaser()
-    {
-        // You can choose to use either method: by name or by tag
-        GameObject laserObj = GameObject.Find(laserObjectName);
-
-        // Or use GameObject.FindWithTag("Laser") if you assigned a tag
-        // GameObject laserObj = GameObject.FindWithTag(laserTag);
-
-        if (laserObj != null)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            laserToActivate = laserObj.GetComponent<LazerBeam>();
-            Debug.Log("Laser found and ready to activate.");
+            TryActivateLaser();
         }
     }
 
-    public void OnActivateLaser(InputAction.CallbackContext context)
+    void AssignPlayer()
     {
-        if (laserToActivate != null)
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
         {
-            float distance = Vector3.Distance(
-                interactionOrigin != null ? interactionOrigin.position : transform.position,
-                laserToActivate.transform.position
-            );
+            interactionOrigin = player.transform;
+            Debug.Log("Player assigned.");
+        }
+        else
+        {
+            Debug.LogWarning(" Player not found.");
+        }
+    }
 
+    void FindLaser()
+    {
+        GameObject laserObj = GameObject.Find(laserObjectName);
+        if (laserObj != null)
+        {
+            laserToActivate = laserObj.GetComponent<LazerBeam>();
+            Debug.Log("Laser assigned.");
+        }
+        else
+        {
+            Debug.LogWarning(" Laser not found.");
+        }
+    }
+
+    void TryActivateLaser()
+    {
+        if (laserToActivate != null && interactionOrigin != null)
+        {
+            float distance = Vector3.Distance(interactionOrigin.position, laserToActivate.transform.position);
             if (distance <= interactionRange)
             {
                 laserToActivate.ActivateLaser();
-                Debug.Log("Laser activated by player input.");
+                Debug.Log(" Laser activated.");
             }
             else
             {
-                Debug.Log("Too far from the laser to activate.");
+                Debug.Log(" Too far from laser.");
             }
         }
         else
         {
-            Debug.Log("No laser found to activate.");
+            Debug.LogError(" Missing laser or player reference.");
         }
     }
 }
