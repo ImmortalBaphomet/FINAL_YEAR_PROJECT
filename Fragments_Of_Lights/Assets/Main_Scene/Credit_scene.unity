@@ -1194,7 +1194,11 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 2100000, guid: 9bf85ffdeb0899047aeb0f0646835f36, type: 2}
+=======
+  - {fileID: 2100000, guid: a3029fc14f4d27542a42d41d500fbb91, type: 2}
+>>>>>>> Stashed changes
 =======
   - {fileID: 2100000, guid: a3029fc14f4d27542a42d41d500fbb91, type: 2}
 >>>>>>> Stashed changes
@@ -1902,6 +1906,7 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d328a4d4cc010f547b6d4ce2d5c0d04e, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1684178577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,6 +2075,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &1714959475
@@ -2274,6 +2281,7 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 764b1ff4603f4394299d8dccefeeb7aa, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1901822602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2350,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &2011039903
@@ -2818,7 +2828,10 @@ MonoBehaviour:
   defSpeed: 0
   rotationSpeed: 10
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   moveInput: {x: 0, y: 0}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &1279573594096055389
@@ -15143,9 +15156,12 @@ SceneRoots:
   - {fileID: 922958773}
   - {fileID: 408516662}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 1901822605}
   - {fileID: 1704719667}
   - {fileID: 10511482}
   - {fileID: 1684178579}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

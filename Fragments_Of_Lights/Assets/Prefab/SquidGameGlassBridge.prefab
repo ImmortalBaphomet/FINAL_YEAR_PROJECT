@@ -170,6 +170,7 @@ Transform:
   m_Father: {fileID: 1845472266535942576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1413333828601956712
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +241,8 @@ MonoBehaviour:
   playerTag: Player
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1433153468560803291
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +257,11 @@ GameObject:
   - component: {fileID: 3368619151325569010}
   - component: {fileID: 8703653960816584384}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -379,7 +386,11 @@ GameObject:
   - component: {fileID: 2347378004289117764}
   - component: {fileID: 1875691771513751950}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -598,7 +609,10 @@ Transform:
   - {fileID: 5086054144547719969}
   - {fileID: 4602960791192600117}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 2935021765440145740}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   - {fileID: 6089781207397747558}
@@ -726,7 +740,11 @@ GameObject:
   - component: {fileID: 2497188747684293142}
   - component: {fileID: 9069481269914718412}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -956,7 +974,11 @@ GameObject:
   - component: {fileID: 3395122776613798720}
   - component: {fileID: 1350131985947357146}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -1185,7 +1207,11 @@ GameObject:
   - component: {fileID: 3434606796324078938}
   m_Layer: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Name: Gate life
+=======
+  m_Name: Gate (3)
+>>>>>>> Stashed changes
 =======
   m_Name: Gate (3)
 >>>>>>> Stashed changes
@@ -1305,7 +1331,11 @@ GameObject:
   - component: {fileID: 7251380590332424603}
   - component: {fileID: 8480440292345859560}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -1429,7 +1459,11 @@ GameObject:
   - component: {fileID: 6423498872107805761}
   m_Layer: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Name: Gate death
+=======
+  m_Name: Gate (2)
+>>>>>>> Stashed changes
 =======
   m_Name: Gate (2)
 >>>>>>> Stashed changes
@@ -2011,7 +2045,11 @@ GameObject:
   - component: {fileID: 5310278951979259967}
   - component: {fileID: 1751934020659724496}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -2136,7 +2174,11 @@ GameObject:
   - component: {fileID: 4318931863503748098}
   - component: {fileID: 1075038834230213182}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -2300,7 +2342,11 @@ GameObject:
   - component: {fileID: 5407407008972389804}
   - component: {fileID: 6885689432620966938}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
 =======
   m_Layer: 0
 >>>>>>> Stashed changes
@@ -3053,6 +3099,7 @@ MeshCollider:
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &6083672477777047463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3176,5 +3223,7 @@ MonoBehaviour:
   maxDistance: 30
   zoomSpeed: 5
   rotateSpeed: 5
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

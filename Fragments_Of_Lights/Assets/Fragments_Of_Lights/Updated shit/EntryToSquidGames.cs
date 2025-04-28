@@ -50,6 +50,7 @@ public class EntryToSquidGames : MonoBehaviour
             }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             // Disable the current main camera
             Camera currentMainCamera = Camera.main;
             if (currentMainCamera != null)
@@ -69,6 +70,8 @@ public class EntryToSquidGames : MonoBehaviour
                 Debug.LogWarning("No camera found inside the puzzle prefab.");
             }
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             Debug.Log("Teleported " + other.name + " to " + sendtoTarget.position);
