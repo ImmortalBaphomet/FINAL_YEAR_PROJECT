@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Color_Change : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Color_Change : MonoBehaviour
     private Color outlineVioletColor; // Outline color for green
     private Color outlineWhiteColor; // Outline color for white
     private Color currentColor; // Current color of the player
+    private PlayerLoco controls;
+
 
     [Header("Timer Settings")]
     public float colorChangeDuration = 3f; // Time in seconds before the color reverts to default
@@ -31,6 +34,8 @@ public class Color_Change : MonoBehaviour
     {
         playerGrab = GetComponent<PlayerGrab>();
     }
+
+    
     void Start()
     {
         // Convert Hex color to Unity Color
@@ -49,6 +54,38 @@ public class Color_Change : MonoBehaviour
 
         prismScript = GetComponent<Prism_Collection>();
     }
+    private void OnEnable()
+    {
+        controls = new PlayerLoco();
+        controls.Player.Enable();
+
+        controls.Player.ColorChangeRed.performed += OnChangeToRed;
+        controls.Player.ColorChangeViolet.performed += OnChangeToViolet;
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.ColorChangeRed.performed -= OnChangeToRed;
+        controls.Player.ColorChangeViolet.performed -= OnChangeToViolet;
+        controls.Player.Disable();
+    }
+
+    public void OnChangeToRed(InputAction.CallbackContext context)
+    {
+        if (prismScript != null && prismScript.HasPrism() && canSwitchColor && !playerGrab.isGrabbing)
+        {
+            UsePrismAndChangeColor(redColor, outlineRedColor);
+        }
+    }
+
+    public void OnChangeToViolet(InputAction.CallbackContext context)
+    {
+        if (prismScript != null && prismScript.HasPrism() && canSwitchColor && !playerGrab.isGrabbing)
+        {
+            UsePrismAndChangeColor(violetColor, outlineVioletColor);
+        }
+    }
+
 
     void Update()
     {
