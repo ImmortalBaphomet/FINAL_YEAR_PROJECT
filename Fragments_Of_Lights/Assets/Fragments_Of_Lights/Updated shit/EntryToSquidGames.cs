@@ -49,6 +49,7 @@ public class EntryToSquidGames : MonoBehaviour
                 other.transform.rotation = sendtoTarget.rotation;
             }
 
+<<<<<<< Updated upstream
             // Disable the current main camera
             Camera currentMainCamera = Camera.main;
             if (currentMainCamera != null)
@@ -68,6 +69,8 @@ public class EntryToSquidGames : MonoBehaviour
                 Debug.LogWarning("No camera found inside the puzzle prefab.");
             }
 
+=======
+>>>>>>> Stashed changes
             Debug.Log("Teleported " + other.name + " to " + sendtoTarget.position);
         }
     }

@@ -169,6 +169,7 @@ Transform:
   - {fileID: 2278234428821332059}
   m_Father: {fileID: 1845472266535942576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &1413333828601956712
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportTarget: {fileID: 0}
   playerTag: Player
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1433153468560803291
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +253,11 @@ GameObject:
   - component: {fileID: 1732560685024085277}
   - component: {fileID: 3368619151325569010}
   - component: {fileID: 8703653960816584384}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +378,11 @@ GameObject:
   - component: {fileID: 5987952913888578103}
   - component: {fileID: 2347378004289117764}
   - component: {fileID: 1875691771513751950}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +597,10 @@ Transform:
   - {fileID: 5291719581914912558}
   - {fileID: 5086054144547719969}
   - {fileID: 4602960791192600117}
+<<<<<<< Updated upstream
   - {fileID: 2935021765440145740}
+=======
+>>>>>>> Stashed changes
   - {fileID: 6089781207397747558}
   - {fileID: 1845472266535942576}
   - {fileID: 3524519174038214679}
@@ -711,7 +725,11 @@ GameObject:
   - component: {fileID: 3568484308073578158}
   - component: {fileID: 2497188747684293142}
   - component: {fileID: 9069481269914718412}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +955,11 @@ GameObject:
   - component: {fileID: 668919093034890066}
   - component: {fileID: 3395122776613798720}
   - component: {fileID: 1350131985947357146}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1184,11 @@ GameObject:
   - component: {fileID: 598657585605439888}
   - component: {fileID: 3434606796324078938}
   m_Layer: 0
+<<<<<<< Updated upstream
   m_Name: Gate life
+=======
+  m_Name: Gate (3)
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1278,7 +1304,11 @@ GameObject:
   - component: {fileID: 883576632244401939}
   - component: {fileID: 7251380590332424603}
   - component: {fileID: 8480440292345859560}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1428,11 @@ GameObject:
   - component: {fileID: 9133350042240505995}
   - component: {fileID: 6423498872107805761}
   m_Layer: 0
+<<<<<<< Updated upstream
   m_Name: Gate death
+=======
+  m_Name: Gate (2)
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1976,7 +2010,11 @@ GameObject:
   - component: {fileID: 6022084809924001305}
   - component: {fileID: 5310278951979259967}
   - component: {fileID: 1751934020659724496}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2097,7 +2135,11 @@ GameObject:
   - component: {fileID: 937278415299009139}
   - component: {fileID: 4318931863503748098}
   - component: {fileID: 1075038834230213182}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2257,7 +2299,11 @@ GameObject:
   - component: {fileID: 835048816015732328}
   - component: {fileID: 5407407008972389804}
   - component: {fileID: 6885689432620966938}
+<<<<<<< Updated upstream
   m_Layer: 7
+=======
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3006,6 +3052,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &6083672477777047463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3129,3 +3176,5 @@ MonoBehaviour:
   maxDistance: 30
   zoomSpeed: 5
   rotateSpeed: 5
+=======
+>>>>>>> Stashed changes
